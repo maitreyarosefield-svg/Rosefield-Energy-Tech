@@ -1,0 +1,6 @@
+{
+  "name": "Rosefield Energy Tech",
+  "description": "B2B corporate knowledge platform and specialised consulting for lubricants, fuels, energy, and circular economy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
