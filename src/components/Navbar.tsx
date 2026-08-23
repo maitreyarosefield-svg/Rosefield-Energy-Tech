@@ -117,12 +117,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className={`w-full bg-[#F9F8F6]/95 backdrop-blur-md border-b transition-shadow duration-200 ${
         isScrolled ? 'shadow-sm border-[#1D1D1B]/15' : 'border-[#1D1D1B]/10'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-20 sm:h-22 flex items-center justify-between">
           
           {/* Brand Logo */}
           <button 
             onClick={() => handleNavClick('home')}
-            className="text-left focus:outline-hidden group cursor-pointer"
+            className="text-left focus:outline-hidden group cursor-pointer py-1"
           >
             <Logo size="md" />
           </button>
