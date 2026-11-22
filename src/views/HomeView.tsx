@@ -2,15 +2,15 @@ import React from 'react';
 import { PageRoute } from '../types';
 import { 
   SERVICE_VERTICALS, 
-  INDUSTRY_SECTORS, 
   RECYKLUBE_STEPS, 
   WHY_ROSEFIELD, 
   OUR_APPROACH_STEPS, 
-  INSIGHTS_DATA, 
+  NEWS_DATA,
+  BLOGS_DATA,
+  GALLERY_DATA,
   EVENTS_DATA, 
   TRUST_STATS 
 } from '../data/mockData';
-import { EcosystemExplorer } from '../components/EcosystemExplorer';
 import { 
   ArrowRight, 
   Sparkles, 
@@ -18,7 +18,6 @@ import {
   RotateCw, 
   Calendar, 
   MapPin, 
-  FileText, 
   ShieldCheck, 
   Droplets, 
   Award, 
@@ -34,7 +33,9 @@ import {
 interface HomeViewProps {
   onRouteChange: (route: PageRoute) => void;
   onOpenEnquiry: (area?: string) => void;
-  onOpenReport: (reportId: string) => void;
+  onOpenNews: (newsId?: string) => void;
+  onOpenBlog: (blogId?: string) => void;
+  onOpenGallery: (galleryId?: string) => void;
   onOpenEvent: (eventId: string) => void;
   onOpenCalculator: () => void;
 }
@@ -42,7 +43,9 @@ interface HomeViewProps {
 export const HomeView: React.FC<HomeViewProps> = ({
   onRouteChange,
   onOpenEnquiry,
-  onOpenReport,
+  onOpenNews,
+  onOpenBlog,
+  onOpenGallery,
   onOpenEvent,
   onOpenCalculator
 }) => {
@@ -383,7 +386,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   onClick={() => {
                     if (vert.id === 'events-platforms') onRouteChange('events');
                     else if (vert.id === 'circular-epr') onRouteChange('recyklube');
-                    else if (vert.id === 'market-intelligence') onRouteChange('insights');
+                    else if (vert.id === 'market-intelligence') onRouteChange('news');
                     else onRouteChange('services');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
@@ -405,13 +408,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
           ))}
         </div>
 
-      </section>
-
-      {/* ============================================================ */}
-      {/* SECTION 4: INDUSTRY ECOSYSTEM (PRD Section 10)               */}
-      {/* ============================================================ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-6">
-        <EcosystemExplorer onOpenEnquiry={onOpenEnquiry} />
       </section>
 
       {/* ============================================================ */}
@@ -626,81 +622,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ============================================================ */}
-      {/* SECTION 8: FEATURED INSIGHTS & REPORTS (PRD Section 14)      */}
-      {/* ============================================================ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
-        
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#1D1D1B]/10 pb-6">
-          <div>
-            <span className="text-[10px] font-sans font-bold text-[#B84A28] uppercase tracking-[0.25em]">
-              Market Intelligence Hub
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1D1D1B] font-medium tracking-tight">
-              Featured Research & Industry Publications
-            </h2>
-            <p className="text-[#1D1D1B]/60 text-sm mt-1 max-w-xl font-sans">
-              Authoritative data on base oils, lubricant formulations, used oil re-refining economics, and statutory EPR updates.
-            </p>
-          </div>
-
-          <button
-            onClick={() => {
-              onRouteChange('insights');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="text-xs font-sans font-bold uppercase tracking-[0.15em] text-[#1D1D1B] hover:text-[#B84A28] underline underline-offset-4 transition-colors inline-flex items-center gap-1.5 cursor-pointer shrink-0"
-          >
-            <span>Browse Full Knowledge Hub</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {INSIGHTS_DATA.slice(0, 3).map((item) => (
-            <div
-              key={item.id}
-              className="p-6 rounded-2xl bg-white border border-[#1D1D1B]/10 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4 group"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#F2EFE9] text-[#1D1D1B] text-[10px] font-sans font-bold uppercase tracking-wider">
-                    {item.format}
-                  </span>
-                  <span className="text-xs text-[#1D1D1B]/40 font-mono">
-                    {item.date}
-                  </span>
-                </div>
-
-                <h3 className="font-serif text-lg font-medium text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors leading-snug">
-                  {item.title}
-                </h3>
-
-                <p className="text-xs text-[#1D1D1B]/70 line-clamp-3 leading-relaxed font-sans">
-                  {item.summary}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#1D1D1B]/10 flex items-center justify-between">
-                <span className="text-xs text-[#1D1D1B]/50 font-sans font-medium">
-                  {item.category}
-                </span>
-
-                <button
-                  onClick={() => onOpenReport(item.id)}
-                  className="px-3.5 py-1.5 rounded-full bg-[#1D1D1B] hover:bg-black text-[#F9F8F6] text-xs font-sans font-bold uppercase tracking-[0.1em] transition-colors flex items-center gap-1.5 cursor-pointer"
-                >
-                  <FileText className="w-3.5 h-3.5 text-[#E8E6E1]" />
-                  <span>Abstract</span>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </section>
-
-      {/* ============================================================ */}
-      {/* SECTION 9: UPCOMING EVENTS (PRD Section 15)                  */}
+      {/* SECTION 8: UPCOMING EVENTS (PRD Section 15)                  */}
       {/* ============================================================ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
         
@@ -784,6 +706,174 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
             </div>
           ))}
+        </div>
+
+      </section>
+
+      {/* ============================================================ */}
+      {/* SECTION 9: NEWS, BLOGS & GALLERY SHOWCASE                    */}
+      {/* ============================================================ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
+        
+        {/* News & Blogs Editorial Split */}
+        <div className="space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#1D1D1B]/10 pb-6">
+            <div>
+              <span className="text-[10px] font-sans font-bold text-[#B84A28] uppercase tracking-[0.25em]">
+                Dispatches & Editorial Journal
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#1D1D1B] font-medium tracking-tight">
+                Latest Industry News & Expert Blogs
+              </h2>
+              <p className="text-[#1D1D1B]/60 text-sm mt-1 max-w-xl font-sans">
+                Regulatory bulletins, base oil supply updates, and deep-dive technical perspectives from Rosefield’s advisory desk.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-5 shrink-0">
+              <button
+                onClick={() => onOpenNews()}
+                className="text-xs font-sans font-bold uppercase tracking-[0.15em] text-[#1D1D1B] hover:text-[#B84A28] underline underline-offset-4 transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>All News</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => onOpenBlog()}
+                className="text-xs font-sans font-bold uppercase tracking-[0.15em] text-[#1D1D1B] hover:text-[#B84A28] underline underline-offset-4 transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>All Blogs</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Latest News Column (6 cols) */}
+            <div className="lg:col-span-6 space-y-4">
+              <div className="text-xs font-sans font-semibold uppercase tracking-[0.18em] text-[#1D1D1B]/60">
+                Industry News Wire
+              </div>
+              <div className="space-y-4">
+                {NEWS_DATA.slice(0, 2).map((item) => (
+                  <article
+                    key={item.id}
+                    onClick={() => onOpenNews(item.id)}
+                    className="p-6 rounded-2xl bg-white border border-[#1D1D1B]/10 hover:border-[#1D1D1B]/25 transition-colors space-y-3 cursor-pointer group"
+                  >
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-[#1D1D1B]/55 font-sans">
+                      <span className="font-semibold text-[#B84A28]">{item.category}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{item.date}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{item.location}</span>
+                    </div>
+                    <h3 className="font-serif text-xl font-medium text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[#1D1D1B]/70 line-clamp-2 leading-relaxed font-sans">
+                      {item.summary}
+                    </p>
+                    <div className="pt-2 text-xs font-semibold text-[#1D1D1B] group-hover:text-[#B84A28] inline-flex items-center gap-1.5">
+                      <span>Read Dispatch</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Latest Blogs Column (6 cols) */}
+            <div className="lg:col-span-6 space-y-4">
+              <div className="text-xs font-sans font-semibold uppercase tracking-[0.18em] text-[#1D1D1B]/60">
+                Advisory Blog Essays
+              </div>
+              <div className="space-y-4">
+                {BLOGS_DATA.slice(0, 2).map((post) => (
+                  <article
+                    key={post.id}
+                    onClick={() => onOpenBlog(post.id)}
+                    className="p-6 rounded-2xl bg-white border border-[#1D1D1B]/10 hover:border-[#1D1D1B]/25 transition-colors space-y-3 cursor-pointer group"
+                  >
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-[#1D1D1B]/55 font-sans">
+                      <span className="font-semibold text-[#B84A28]">{post.category}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{post.date}</span>
+                      <span aria-hidden="true">·</span>
+                      <span className="font-mono tabular-nums">{post.readTime}</span>
+                    </div>
+                    <h3 className="font-serif text-xl font-medium text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors leading-snug">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-[#1D1D1B]/70 line-clamp-2 leading-relaxed font-sans">
+                      {post.excerpt}
+                    </p>
+                    <div className="pt-2 flex items-center justify-between text-xs">
+                      <span className="text-[#1D1D1B]/55">{post.author.name}</span>
+                      <span className="font-semibold text-[#1D1D1B] group-hover:text-[#B84A28] inline-flex items-center gap-1.5">
+                        <span>Read Essay</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Visual Gallery Strip */}
+        <div className="space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#1D1D1B]/10 pb-6">
+            <div>
+              <span className="text-[10px] font-sans font-bold text-[#B84A28] uppercase tracking-[0.25em]">
+                Visual Archive
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#1D1D1B] font-medium tracking-tight">
+                Rosefield Gallery
+              </h2>
+              <p className="text-[#1D1D1B]/60 text-sm mt-1 max-w-xl font-sans">
+                Photography from leadership summits, modern hydro-treating re-refineries, and RecykLube operational hubs.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onOpenGallery()}
+              className="text-xs font-sans font-bold uppercase tracking-[0.15em] text-[#1D1D1B] hover:text-[#B84A28] underline underline-offset-4 transition-colors inline-flex items-center gap-1.5 cursor-pointer shrink-0"
+            >
+              <span>Explore Full Gallery</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {GALLERY_DATA.slice(0, 3).map((item) => (
+              <figure
+                key={item.id}
+                onClick={() => onOpenGallery(item.id)}
+                className="rounded-2xl bg-white border border-[#1D1D1B]/10 overflow-hidden hover:border-[#1D1D1B]/25 transition-colors cursor-pointer group"
+              >
+                <div className="aspect-[4/3] bg-[#E8E6E1] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <figcaption className="p-5 space-y-1.5">
+                  <div className="text-xs text-[#1D1D1B]/55 font-sans">
+                    <span className="font-mono text-[#B84A28] font-semibold">{item.figNumber}</span>
+                    <span aria-hidden="true"> · </span>
+                    <span>{item.category}</span>
+                  </div>
+                  <h3 className="font-serif text-lg font-medium text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
 
       </section>

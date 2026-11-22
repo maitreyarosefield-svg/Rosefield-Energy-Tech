@@ -2,9 +2,10 @@ export type PageRoute =
   | 'home'
   | 'about'
   | 'services'
-  | 'industries'
   | 'recyklube'
-  | 'insights'
+  | 'news'
+  | 'blogs'
+  | 'gallery'
   | 'events'
   | 'sustainability'
   | 'contact';
@@ -49,37 +50,72 @@ export interface IndustrySector {
   metrics?: { label: string; value: string };
 }
 
-export type InsightCategory = 
+export type NewsCategory =
   | 'All'
-  | 'Lubricants'
-  | 'Base Oils'
-  | 'Fuels & Energy'
+  | 'Regulatory & EPR'
+  | 'Base Oils & Refining'
   | 'Circular Economy'
-  | 'Used Oil & EPR'
-  | 'Market Intelligence'
-  | 'Regulatory Updates';
+  | 'EV & Biofuels'
+  | 'Industry Deals';
 
-export type InsightFormat = 'Report' | 'Intelligence Brief' | 'Article' | 'Case Study' | 'Regulatory Flash';
-
-export interface InsightItem {
+export interface NewsItem {
   id: string;
   title: string;
-  slug: string;
-  category: InsightCategory;
-  format: InsightFormat;
+  category: Exclude<NewsCategory, 'All'>;
+  date: string;
+  location: string;
+  readTime: string;
+  source: string;
+  summary: string;
+  body: string[];
+  keyPoints: string[];
+  image: string;
+  featured?: boolean;
+}
+
+export type BlogCategory =
+  | 'All'
+  | 'Formulation & Chemistry'
+  | 'Circularity & EPR'
+  | 'Market Strategy'
+  | 'Energy Transition';
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  category: Exclude<BlogCategory, 'All'>;
   date: string;
   readTime: string;
-  summary: string;
+  excerpt: string;
+  pullQuote: string;
+  body: string[];
+  takeaways: string[];
   author: {
     name: string;
     role: string;
   };
-  tableOfContents?: string[];
-  keyTakeaways?: string[];
-  downloadable?: boolean;
-  pagesCount?: number;
+  image: string;
   featured?: boolean;
-  fullContent?: string;
+}
+
+export type GalleryCategory =
+  | 'All'
+  | 'Summits & Forums'
+  | 'Refining & Lab'
+  | 'RecykLube Operations'
+  | 'Technical & EV';
+
+export interface GalleryItem {
+  id: string;
+  figNumber: string;
+  title: string;
+  category: Exclude<GalleryCategory, 'All'>;
+  date: string;
+  location: string;
+  caption: string;
+  description: string;
+  image: string;
+  aspect?: 'wide' | 'standard';
 }
 
 export interface EventItem {

@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { PageRoute, ServiceVerticalId, IndustryId } from '../types';
+import { PageRoute, ServiceVerticalId } from '../types';
 import { Logo } from './Logo';
-import { SERVICE_VERTICALS, INDUSTRY_SECTORS } from '../data/mockData';
+import { SERVICE_VERTICALS } from '../data/mockData';
 import { 
   Search, 
   ChevronDown, 
   Menu, 
   X, 
   ArrowRight, 
-  Phone, 
   Mail, 
   Sparkles,
   Compass,
   Users,
   RefreshCw,
-  BarChart3,
-  Droplets,
-  Flame,
-  RotateCw,
-  Package,
-  ShieldCheck,
-  Truck
+  BarChart3
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -40,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<'services' | 'industries' | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<'services' | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,17 +56,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       case 'strategic-consultancy': return <Compass className="w-4 h-4 text-[#F8B848]" />;
       case 'circular-epr': return <RefreshCw className="w-4 h-4 text-[#E85D36]" />;
       case 'market-intelligence': return <BarChart3 className="w-4 h-4 text-[#F8B848]" />;
-    }
-  };
-
-  const getIndustryIcon = (id: IndustryId) => {
-    switch (id) {
-      case 'lubricants': return <Droplets className="w-4 h-4 text-[#F88058]" />;
-      case 'fuels-energy': return <Flame className="w-4 h-4 text-[#F8B848]" />;
-      case 'circular-economy': return <RotateCw className="w-4 h-4 text-[#E85D36]" />;
-      case 'used-oil': return <Package className="w-4 h-4 text-[#F88058]" />;
-      case 'epr-sustainability': return <ShieldCheck className="w-4 h-4 text-[#F8B848]" />;
-      case 'industrial-automotive': return <Truck className="w-4 h-4 text-[#E85D36]" />;
     }
   };
 
@@ -166,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
                 }`}
               >
-                <span>What We Do</span>
+                <span>Services</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'services' ? 'rotate-180 text-[#1D1D1B]' : 'text-[#1D1D1B]/40'}`} />
               </button>
 
@@ -206,93 +188,74 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Industries Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('industries')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button
-                onClick={() => handleNavClick('industries')}
-                className={`px-3 py-2 rounded-sm inline-flex items-center gap-1 transition-colors cursor-pointer ${
-                  currentRoute === 'industries' 
-                    ? 'text-[#1D1D1B] font-semibold bg-[#E8E6E1]/60' 
-                    : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
-                }`}
-              >
-                <span>Industries</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'industries' ? 'rotate-180 text-[#1D1D1B]' : 'text-[#1D1D1B]/40'}`} />
-              </button>
-
-              {/* Industries Dropdown Menu */}
-              {activeDropdown === 'industries' && (
-                <div className="absolute top-full left-0 w-[420px] bg-[#F9F8F6] rounded-xl shadow-xl border border-[#1D1D1B]/15 p-3 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                  <div className="px-3 py-2 border-b border-[#1D1D1B]/10 mb-2 flex items-center justify-between">
-                    <span className="text-[10px] font-sans font-bold text-[#1D1D1B]/60 uppercase tracking-[0.25em]">Connected Industry Ecosystem</span>
-                    <button 
-                      onClick={() => handleNavClick('industries')} 
-                      className="text-xs text-[#1D1D1B] font-medium hover:underline underline-offset-4 inline-flex items-center gap-1"
-                    >
-                      Explore All <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {INDUSTRY_SECTORS.map((sec) => (
-                      <button
-                        key={sec.id}
-                        onClick={() => handleNavClick('industries')}
-                        className="text-left p-2 rounded-lg hover:bg-[#E8E6E1]/70 transition-colors flex items-start gap-2.5 group"
-                      >
-                        <div className="p-1 rounded-md bg-[#E8E6E1] border border-[#1D1D1B]/10 shrink-0 mt-0.5">
-                          {getIndustryIcon(sec.id)}
-                        </div>
-                        <div>
-                          <div className="font-serif font-semibold text-xs text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors">
-                            {sec.title}
-                          </div>
-                          <span className="text-[11px] text-[#1D1D1B]/50 block line-clamp-1">{sec.subtitle}</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
             {/* RecykLube Spotlight Link */}
             <button
               onClick={() => handleNavClick('recyklube')}
-              className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer inline-flex items-center gap-1.5 ${
+              title="RecykLube Circular Oil Ecosystem"
+              aria-label="RecykLube"
+              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer inline-flex items-center justify-center group ${
                 currentRoute === 'recyklube'
-                  ? 'bg-[#1D1D1B] text-[#F9F8F6] font-semibold shadow-xs'
-                  : 'bg-[#E8E6E1] border border-[#1D1D1B]/15 text-[#1D1D1B] hover:bg-[#DCD8D0] font-semibold'
+                  ? 'bg-white border border-[#B84A28]/50 shadow-xs ring-1 ring-[#B84A28]/20'
+                  : 'bg-white/70 border border-[#1D1D1B]/12 hover:bg-white hover:border-[#1D1D1B]/25 shadow-2xs'
               }`}
             >
-              <RotateCw className="w-3.5 h-3.5 text-[#B84A28]" />
-              <span>RecykLube</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B84A28]"></span>
-            </button>
-
-            <button
-              onClick={() => handleNavClick('insights')}
-              className={`px-3 py-2 rounded-sm transition-colors cursor-pointer ${
-                currentRoute === 'insights' 
-                  ? 'text-[#1D1D1B] font-semibold bg-[#E8E6E1]/60' 
-                  : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
-              }`}
-            >
-              Insights
+              <img
+                src="/recyklube-logo.png"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  const fallback = 'https://i.ibb.co/35YSrhmB/R3-T-Flyer-2.png';
+                  if (target.src !== fallback) {
+                    target.src = fallback;
+                  }
+                }}
+                alt="RecykLube"
+                referrerPolicy="no-referrer"
+                className="h-6 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03]"
+              />
             </button>
 
             <button
               onClick={() => handleNavClick('events')}
-              className={`px-3 py-2 rounded-sm transition-colors cursor-pointer ${
+              className={`px-3 py-2 rounded-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 currentRoute === 'events' 
                   ? 'text-[#1D1D1B] font-semibold bg-[#E8E6E1]/60' 
                   : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
               }`}
             >
               Events
+            </button>
+
+            <button
+              onClick={() => handleNavClick('blogs')}
+              className={`px-3 py-2 rounded-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                currentRoute === 'blogs' 
+                  ? 'text-[#1D1D1B] font-semibold bg-[#E8E6E1]/60' 
+                  : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
+              }`}
+            >
+              Blogs
+            </button>
+
+            <button
+              onClick={() => handleNavClick('gallery')}
+              className={`px-3 py-2 rounded-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                currentRoute === 'gallery' 
+                  ? 'text-[#1D1D1B] font-semibold bg-[#E8E6E1]/60' 
+                  : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
+              }`}
+            >
+              Gallery
+            </button>
+
+            <button
+              onClick={() => handleNavClick('news')}
+              className={`px-3 py-2 rounded-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                currentRoute === 'news' 
+                  ? 'text-[#1D1D1B] font-semibold bg-[#E8E6E1]/60' 
+                  : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
+              }`}
+            >
+              News
             </button>
 
             <button
@@ -313,7 +276,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenSearch}
               className="p-2.5 rounded-lg text-[#1D1D1B]/70 hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/60 transition-colors cursor-pointer border border-[#1D1D1B]/15 flex items-center gap-2"
-              title="Search insights, reports & services (Ctrl+K)"
+              title="Search news, blogs, gallery & services (Ctrl+K)"
             >
               <Search className="w-4 h-4 text-[#1D1D1B]/80" />
               <span className="hidden xl:inline text-[10px] text-[#1D1D1B]/60 font-mono bg-white px-1.5 py-0.5 rounded border border-[#1D1D1B]/10">
@@ -353,31 +316,54 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => handleNavClick('services')}
               className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'services' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
             >
-              What We Do (4 Verticals)
-            </button>
-            <button
-              onClick={() => handleNavClick('industries')}
-              className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'industries' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
-            >
-              Industry Ecosystem
+              Services
             </button>
             <button
               onClick={() => handleNavClick('recyklube')}
-              className={`p-3 rounded-lg text-left font-semibold text-sm bg-[#E8E6E1] border border-[#1D1D1B]/20 text-[#1D1D1B]`}
+              aria-label="RecykLube"
+              className={`p-3 rounded-lg flex items-center justify-start transition-colors ${
+                currentRoute === 'recyklube'
+                  ? 'bg-white border border-[#B84A28]/50 shadow-xs'
+                  : 'bg-white/80 border border-[#1D1D1B]/15'
+              }`}
             >
-              RecykLube (Circular Oil)
-            </button>
-            <button
-              onClick={() => handleNavClick('insights')}
-              className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'insights' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
-            >
-              Insights & Reports
+              <img
+                src="/recyklube-logo.png"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  const fallback = 'https://i.ibb.co/35YSrhmB/R3-T-Flyer-2.png';
+                  if (target.src !== fallback) {
+                    target.src = fallback;
+                  }
+                }}
+                alt="RecykLube"
+                referrerPolicy="no-referrer"
+                className="h-6 w-auto object-contain"
+              />
             </button>
             <button
               onClick={() => handleNavClick('events')}
               className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'events' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
             >
               Events & Summits
+            </button>
+            <button
+              onClick={() => handleNavClick('blogs')}
+              className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'blogs' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
+            >
+              Blogs
+            </button>
+            <button
+              onClick={() => handleNavClick('gallery')}
+              className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'gallery' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
+            >
+              Gallery
+            </button>
+            <button
+              onClick={() => handleNavClick('news')}
+              className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'news' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
+            >
+              News
             </button>
             <button
               onClick={() => handleNavClick('contact')}

@@ -1,4 +1,9 @@
-import { ServiceVertical, IndustrySector, InsightItem, EventItem, RecykLubeStep, TrustStat } from '../types';
+import { ServiceVertical, IndustrySector, NewsItem, BlogPost, GalleryItem, EventItem, RecykLubeStep, TrustStat } from '../types';
+import summitPhoto from '../assets/images/gallery_lubricants_summit_1795365286288.jpg';
+import plantPhoto from '../assets/images/gallery_rerefining_plant_1795365286705.jpg';
+import labPhoto from '../assets/images/gallery_oil_lab_testing_1795365287315.jpg';
+import logisticsPhoto from '../assets/images/gallery_recyklube_logistics_1795365288314.jpg';
+import evFluidPhoto from '../assets/images/blog_ev_thermal_fluid_1795365288600.jpg';
 
 export const TRUST_STATS: TrustStat[] = [
   {
@@ -141,7 +146,7 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
       'Corporate Affairs & Policy Directors'
     ],
     caseSnippet: 'Published the definitive "India Used Oil Ecosystem & Re-refining Outlook 2025-2030", cited by leading energy boards and industry associations.',
-    ctaText: 'Explore Insights'
+    ctaText: 'Explore News & Blogs'
   }
 ];
 
@@ -413,154 +418,279 @@ export const OUR_APPROACH_STEPS = [
   }
 ];
 
-export const INSIGHTS_DATA: InsightItem[] = [
+export const NEWS_DATA: NewsItem[] = [
   {
-    id: 'report-used-oil-outlook-2026',
-    title: 'Indian Used Oil Ecosystem & Re-refining Outlook 2026-2030',
-    slug: 'indian-used-oil-ecosystem-re-refining-outlook-2026',
-    category: 'Used Oil & EPR',
-    format: 'Report',
-    date: 'February 2026',
-    readTime: '24 min read',
-    summary: 'A definitive 68-page assessment on national used oil generation volumes, collection mechanics, state-level EPR enforcement, and the economics of Group II hydro-treating re-refineries.',
-    author: {
-      name: 'Rosefield Intelligence Bureau',
-      role: 'Energy & Circular Advisory Group'
-    },
-    tableOfContents: [
-      'Executive Summary & Market Sizing',
-      'Current Used Oil Flow & Informal Leakage Assessment',
-      'CPCB & MoEFCC Regulatory Frameworks & EPR Multipliers',
-      'Techno-Commercial Evaluation of Solvent Extraction vs Hydro-finishing',
-      'Re-Refined Base Oil (RRBO) Pricing Parity with Virgin Group II',
-      'Strategic Recommendations for Finished Lubricant Blenders'
+    id: 'news-epr-2026-enforcement',
+    title: 'Central Pollution Control Board Tightens Digital QR-Manifest Compliance for Used Oil Importers',
+    category: 'Regulatory & EPR',
+    date: 'November 14, 2026',
+    location: 'New Delhi, India',
+    readTime: '4 min read',
+    source: 'Rosefield Regulatory Desk',
+    summary: 'Updated statutory directives mandate real-time batch-level QR verification between authorized collection hubs and hydro-treating re-refiners ahead of FY 2026-27 EPR reconciliation.',
+    body: [
+      'Regulatory authorities have formally notified stricter digital provenance rules governing Extended Producer Responsibility (EPR) certificate generation across the Indian finished lubricants and base oil import ecosystem.',
+      'Under the revised compliance protocol, every consignment of collected used lubricating oil destined for re-refining must record custody transfers via timestamped digital manifests before EPR credits can be minted on the central portal.',
+      'Rosefield Energy Tech’s RecykLube compliance desk notes that early-adopting blenders and OEM workshop networks already utilizing verified closed-loop pipelines face zero disruption, while spot-market traders must audit recycler chain-of-custody documentation prior to annual filings.'
     ],
-    keyTakeaways: [
-      'India generates an estimated 1.45M MT of used oil annually, with formal re-refining capacity expected to grow at 16.4% CAGR.',
-      'Mandatory EPR targets will require blenders to source at least 40% of their base stock requirements from re-refined sources by 2028.',
-      'Group II+ RRBO produced via modern hydro-treating matches virgin SN 150/500 in oxidation stability and cold-cranking performance.'
+    keyPoints: [
+      'Mandatory QR-coded batch traceability from authorized workshop collection through refinery gate intake.',
+      'Quarterly reconciliation checkpoints instituted for lubricant brand owners and base oil importers.',
+      'Verified hydro-treated Group II+ re-refined base oil (RRBO) volumes qualify for priority EPR credit issuance.'
     ],
-    downloadable: true,
-    pagesCount: 68,
+    image: logisticsPhoto,
     featured: true
   },
   {
-    id: 'report-base-oil-dynamics-2026',
-    title: 'Global Base Oils Supply-Demand & Price Trend Forecast (Q1-Q4 2026)',
-    slug: 'global-base-oils-supply-demand-price-forecast-2026',
-    category: 'Base Oils',
-    format: 'Report',
-    date: 'January 2026',
-    readTime: '18 min read',
-    summary: 'Comprehensive analysis of Group I rationalisation in Europe/APAC, expansion of Middle East Group III mega-plants, and regional freight spread impacts on blending margins.',
+    id: 'news-gcc-group-iii-capacity',
+    title: 'Middle East Group III Mega-Refinery Expansion Reshapes APAC Base Oil Freight Spreads',
+    category: 'Base Oils & Refining',
+    date: 'November 06, 2026',
+    location: 'Mumbai & Fujairah',
+    readTime: '5 min read',
+    source: 'Rosefield Market Wire',
+    summary: 'Fresh hydro-cracked Group III capacity coming online in the Gulf Cooperation Council is easing regional viscosity index 120+ tightness and shifting South Asian import parities.',
+    body: [
+      'New high-viscosity-index Group III base stock trains entering commercial export service in the Middle East are recalibrating import economics for South and Southeast Asian lubricant blenders.',
+      'Spot FOB spreads between Group II N150 and Group III 4 cSt grades have narrowed by roughly $65 per metric ton over the past two quarters, prompting independent blenders to revisit synthetic and semi-synthetic passenger car motor oil formulations.',
+      'Procurement teams evaluating 2027 annual term contracts are increasingly pairing GCC Group III cargoes with domestically re-refined Group II+ volumes to balance performance specs with EPR obligations.'
+    ],
+    keyPoints: [
+      'Narrowing Group II to Group III price differentials encourage wider adoption of 0W-20 and 5W-30 formulations.',
+      'Container and parcel-tanker freight stability restores quarterly predictability for Indian port-based blenders.',
+      'Group I brightstock continues in structural deficit, driving heavy Group II substitution in industrial gear oils.'
+    ],
+    image: plantPhoto
+  },
+  {
+    id: 'news-recyklube-oem-milestone',
+    title: 'RecykLube Crosses 14 Million Liters in Audited Closed-Loop Used Oil Traceability',
+    category: 'Circular Economy',
+    date: 'October 28, 2026',
+    location: 'Pune & Chennai Corridors',
+    readTime: '3 min read',
+    source: 'RecykLube Press Office',
+    summary: 'Rosefield’s flagship circular initiative expands authorized dealership pickup coverage across 18 industrial clusters, linking Tier-1 workshops directly with licensed hydro-treaters.',
+    body: [
+      'RecykLube, the circular used oil ecosystem architected by Rosefield Energy Tech, has surpassed 14 million liters of digitally verified spent lubricant recovery across Western and Southern India.',
+      'The milestone reflects rapid onboarding of franchised automotive service bays and fleet depots seeking zero-leakage hazardous waste compliance alongside transparent Scope 3 carbon abatement reporting.',
+      'Recovered feedstocks are routed exclusively to modern vacuum-distillation and hydro-finishing re-refineries, returning Group II+ base oil back into closed-loop industrial and automotive blending.'
+    ],
+    keyPoints: [
+      '18 major automotive and industrial corridors connected under unified digital weighbridge and lab QA logs.',
+      'Over 9,400 metric tons of CO2-equivalent emissions avoided compared to virgin crude refining and informal burning.',
+      'Turnkey audit dossiers prepared automatically for OEM ESG and CPCB EPR submissions.'
+    ],
+    image: labPhoto
+  },
+  {
+    id: 'news-ev-immersion-cooling-standard',
+    title: 'OEM Consortium Advances Dielectric Thermal Fluid Specifications for Next-Gen EV Axles',
+    category: 'EV & Biofuels',
+    date: 'October 19, 2026',
+    location: 'Bengaluru, India',
+    readTime: '4 min read',
+    source: 'Rosefield Technical Desk',
+    summary: 'Two-wheeler and commercial EV manufacturers align on ultra-low-viscosity dielectric fluid benchmarks emphasizing copper passivation and thermal conductivity.',
+    body: [
+      'Leading electric powertrain developers and specialty additive suppliers have published updated testing benchmarks for direct-cooled e-axle and battery immersion fluids tailored to tropical ambient operating conditions.',
+      'Unlike legacy automatic transmission fluids, next-generation EV thermal fluids must sustain dielectric breakdown voltages above 40 kV while preventing copper winding corrosion under high-frequency inverter loads.',
+      'Rosefield’s formulation advisory unit is currently assisting regional blenders with base fluid selection across ultra-light Group III, PAO, and bio-ester blends.'
+    ],
+    keyPoints: [
+      'Direct stator-oil cooling demands kinematic viscosities below 3.5 cSt at 100°C without sacrificing flash point.',
+      'Synthetic ester co-base stocks show superior thermal transfer and elastomer compatibility.',
+      'Dedicated commercial EV e-fluid testing rigs commissioned across Western India R&D hubs.'
+    ],
+    image: evFluidPhoto
+  },
+  {
+    id: 'news-mumbai-summit-2026-recap',
+    title: 'India Lubricants & Base Oils Leadership Summit Draws 500+ Industry Executives in Mumbai',
+    category: 'Industry Deals',
+    date: 'October 17, 2026',
+    location: 'The St. Regis, Mumbai',
+    readTime: '4 min read',
+    source: 'Rosefield Convening Desk',
+    summary: 'Senior leaders from national oil companies, global additive majors, and re-refining pioneers concluded two days of strategic deal-making and policy dialogue.',
+    body: [
+      'Hosted by Rosefield Energy Tech in Mumbai, the 2026 India Lubricants & Base Oils Leadership Summit convened more than 500 executives across refining, blending, additive chemistry, and circular waste recovery.',
+      'Keynote sessions focused on aligning commercial base oil procurement with India’s mandatory EPR trajectory, scaling domestic hydro-treating re-refinery investments, and preparing formulation labs for BS-VI Phase II and hybrid-electric powertrains.',
+      'Multiple bilateral off-take memorandums connecting re-refined base oil producers with national lubricant marketers were initiated during the executive roundtable sessions.'
+    ],
+    keyPoints: [
+      'Over 40 keynote speakers and technical panelists across 8 plenary and breakout forums.',
+      'Dedicated RecykLube Deal Room facilitated direct RRBO off-take introductions.',
+      '2027 edition dates and APAC partner tracks announced for Q4 next year.'
+    ],
+    image: summitPhoto
+  }
+];
+
+export const BLOGS_DATA: BlogPost[] = [
+  {
+    id: 'blog-dielectric-ev-fluids',
+    title: 'Beyond Engine Protection: Why Dielectric Thermal Fluids Are Redefining Lubricant Formulation',
+    category: 'Formulation & Chemistry',
+    date: 'November 18, 2026',
+    readTime: '7 min read',
+    excerpt: 'As electric drivetrains integrate e-motors, reduction gears, and power electronics into unified housings, the lubricant must evolve from a mechanical barrier into an active thermal and electrical medium.',
+    pullQuote: 'In an oil-cooled e-axle, the fluid no longer just separates sliding steel surfaces—it cools high-voltage copper windings while maintaining complete electrical insulation.',
+    body: [
+      'For over a century, automotive lubricant chemistry revolved around managing combustion byproducts: soot dispersion, acid neutralization, and piston-ring wear protection under extreme cylinder temperatures.',
+      'Electrification completely inverts that chemical mandate. Inside modern integrated electric drive units, a single low-viscosity fluid frequently cools the copper stator windings, lubricates high-speed reduction gears spinning past 18,000 RPM, and dissipates heat from inverter busbars.',
+      'Formulators face a sharp multi-variable trade-off. Lowering viscosity improves pumping efficiency and convective heat transfer, yet gears still demand reliable film strength and anti-scuffing extreme-pressure performance without triggering corrosive copper sulfidation.',
+      'At Rosefield Energy Tech, our technical advisory engagements show that successful blenders are pairing ultra-low-viscosity Group III+ or PAO base stocks with tailored ester co-solvents and ashless copper passivators—building differentiated specialty fluid portfolios well ahead of mass fleet electrification.'
+    ],
+    takeaways: [
+      'Dielectric breakdown stability (>40 kV) and low electrical conductivity remain non-negotiable across moisture-aged fluids.',
+      'Ashless additive packages are essential to protect yellow metals and polymer wire enamels inside e-motors.',
+      'Early specification partnerships with domestic two-wheeler and commercial EV OEMs offer the highest margin capture.'
+    ],
     author: {
       name: 'Dr. Alok Verma',
-      role: 'Head of Technical Research'
+      role: 'Head of Technical Research, Rosefield Energy Tech'
     },
-    tableOfContents: [
-      'Macro Crude Drivers & Refinery Utilization Rates',
-      'Group I, Group II, Group III Global Capacity Balances',
-      'Asian Import-Export Dynamics & Port Inflow Trends',
-      'Synthetic PAO & Ester Supply Constraints in EV Coolants',
-      'Margin Sensitivities for Independent Lubricant Blenders'
-    ],
-    keyTakeaways: [
-      'Group III supply tightness is easing with new capacity on-stream in the GCC, softening premium spreads.',
-      'Group I brightstock remains in structural deficit, accelerating the shift to heavy Group II formulations in industrial gear oils.',
-      'Logistics container freights are stabilizing, providing blenders predictability in quarterly contract pricing.'
-    ],
-    downloadable: true,
-    pagesCount: 52,
+    image: evFluidPhoto,
     featured: true
   },
   {
-    id: 'brief-epr-compliance-guide',
-    title: 'Navigating the 2026 EPR Mandate: A Practical Guide for Lubricant Importers',
-    slug: 'navigating-2026-epr-mandate-practical-guide',
-    category: 'Regulatory Updates',
-    format: 'Regulatory Flash',
-    date: 'February 2026',
+    id: 'blog-re-refining-economics',
+    title: 'Hydro-Treating vs. Legacy Acid-Clay: The Economics of Modern Re-Refined Base Oil (RRBO)',
+    category: 'Circularity & EPR',
+    date: 'November 02, 2026',
     readTime: '8 min read',
-    summary: 'A step-by-step advisory note dissecting central portal registration, certificate procurement rules, and audit liability protocols for importers and brand owners.',
+    excerpt: 'Why modern thin-film vacuum distillation and catalytic hydro-finishing plants are turning circular used oil from a compliance cost into a Group II+ parity profit center.',
+    pullQuote: 'Circularity only scales when re-refined base oil competes on molecular quality and refinery economics—not regulatory sympathy alone.',
+    body: [
+      'For decades, used oil recycling carried a stigma among tier-one lubricant blenders. Legacy acid-clay and simple distillation facilities produced dark, unstable base stocks prone to rapid oxidation and inconsistent viscosity.',
+      'Modern re-refining engineering has fundamentally changed that equation. Multi-stage wiped-film evaporation combined with high-pressure catalytic hydro-treating strips out degraded polymers, heavy metals, chlorine, and polycyclic aromatics, yielding water-clear Group II and Group II+ base oils.',
+      'In laboratory bench comparisons conducted across our partner network, hydro-treated RRBO SN 150 consistently matches virgin Group II benchmarks in saturates content (>95%), sulfur levels (<10 ppm), and RPVOT oxidation life.',
+      'Combined with India’s statutory EPR framework, blenders who establish long-term off-take agreements with hydro-treating re-refiners simultaneously secure lower-carbon base stocks, stabilize domestic supply, and satisfy regulatory quotas in one integrated loop.'
+    ],
+    takeaways: [
+      'Hydro-treated RRBO achieves >95% saturates and parity oxidation stability with virgin Group II base stocks.',
+      'Feedstock aggregation consistency—solved through networks like RecykLube—is the single largest driver of plant yield.',
+      'Co-investing in or contracting hydro-treated RRBO hedges blenders against imported crude and freight volatility.'
+    ],
     author: {
-      name: 'Adv. Sameer Joshi',
-      role: 'Senior Regulatory Advisor'
+      name: 'Maitrey Rosefield',
+      role: 'Lead Strategic Advisor, Rosefield Energy Tech'
     },
-    tableOfContents: [
-      'Overview of Revised EPR Obligation Matrices',
-      'Verification Protocols for Recycler EPR Certificates',
-      'Deadlines, Penalties & Escrow Calculations',
-      'Mitigating Fraudulent Certificate Risks'
-    ],
-    keyTakeaways: [
-      'Failure to upload verified QR-coded manifests now triggers immediate show-cause notices from Central authorities.',
-      'Brand owners can leverage RecykLube pre-audited networks to fulfill compliance with complete digital provenance.'
-    ],
-    downloadable: true,
-    pagesCount: 14,
-    featured: false
+    image: plantPhoto
   },
   {
-    id: 'article-ev-fluids-transition',
-    title: 'Thermal Fluids and Dielectric Lubricants: The EV Drivetrain Frontier',
-    slug: 'thermal-fluids-dielectric-lubricants-ev-drivetrain-frontier',
-    category: 'Lubricants',
-    format: 'Article',
-    date: 'January 2026',
-    readTime: '11 min read',
-    summary: 'How electric vehicle architectures are transforming lubrication from traditional engine protection to advanced immersion cooling, copper compatibility, and electrical insulation.',
-    author: {
-      name: 'Technical Advisory Board',
-      role: 'Rosefield Energy Tech'
-    },
-    keyTakeaways: [
-      'Direct immersion battery cooling requires ultra-low viscosity fluids with dielectric breakdown voltages exceeding 40 kV.',
-      'Formulations must demonstrate complete passivation against copper etching in high-temperature stator environments.'
+    id: 'blog-blending-margins-2027',
+    title: 'Formulation Value Engineering: Protecting Blender Margins Amid Group I Brightstock Tightness',
+    category: 'Market Strategy',
+    date: 'October 21, 2026',
+    readTime: '6 min read',
+    excerpt: 'Practical portfolio optimization strategies for independent lubricant blenders navigating structural Group I closures and shifting port-level base stock spreads.',
+    pullQuote: 'A 3% formulation optimization across high-volume industrial grades often outperforms a full year of aggressive price discounting in the aftermarket.',
+    body: [
+      'Continued rationalization of legacy Group I solvent-refining capacity across Europe and Northeast Asia has left heavy brightstock in persistent global deficit, pushing up formulation costs for industrial gear, marine, and heavy-duty grease manufacturers.',
+      'Rather than passing volatile surcharges onto industrial customers, leading blenders are running structured value-engineering audits across their SKU catalogs.',
+      'By re-balancing heavy Group II 500N/600N blends with high-molecular-weight viscosity modifiers and targeted naphthenic or PIB co-components, blenders can reduce brightstock dependency by 30% to 50% without compromising FZG gear load stage performance.',
+      'Simultaneously, consolidating overlapping regional SKUs frees working capital tied up in tankage and additive inventory—allowing mid-sized blenders to defend gross margins while elevating OEM approval coverage.'
     ],
-    downloadable: false,
-    featured: false
+    takeaways: [
+      'Audit top 20 industrial SKUs for Group I brightstock replacement using heavy Group II + polymer architectures.',
+      'Align quarterly base oil procurement with forward freight and regional port inventory trackers.',
+      'Rationalize slow-moving pack sizes and duplicate viscosity grades to unlock tankage capacity.'
+    ],
+    author: {
+      name: 'Rosefield Strategy Practice',
+      role: 'Commercial & M&A Advisory Group'
+    },
+    image: labPhoto
   },
   {
-    id: 'case-closed-loop-oem',
-    title: 'Case Study: Structuring a Nationwide Closed-Loop Oil Recovery Network for a Tier-1 OEM',
-    slug: 'case-study-closed-loop-oil-recovery-tier-1-oem',
-    category: 'Circular Economy',
-    format: 'Case Study',
-    date: 'December 2025',
-    readTime: '14 min read',
-    summary: 'How Rosefield architected an end-to-end collection, testing, and re-refining mechanism across 850 dealership touchpoints, recovering 4.8M liters of used oil annually.',
-    author: {
-      name: 'Strategic Advisory Practice',
-      role: 'Rosefield Energy Tech'
-    },
-    keyTakeaways: [
-      'Achieved 94% collection compliance across authorized service workshops within 9 months.',
-      'Generated over 3,200 metric tons of CO2 equivalent emissions offsets verified through third-party LCA.'
+    id: 'blog-cbg-industrial-fuels',
+    title: 'From Furnace Oil to Compressed Bio-Gas: Navigating Industrial Thermal Decarbonisation',
+    category: 'Energy Transition',
+    date: 'October 09, 2026',
+    readTime: '6 min read',
+    excerpt: 'How manufacturing clusters in Western and Southern India are structuring bankable biofuel and CBG supply agreements to cut Scope 1 boiler emissions.',
+    pullQuote: 'Industrial fuel switching succeeds when feedstock security and index-linked pricing parity are engineered before the first burner retrofit.',
+    body: [
+      'While passenger mobility captures most clean-energy headlines, industrial process heat accounts for a massive share of commercial hydrocarbon demand across textiles, food processing, pharmaceuticals, and metal fabrication.',
+      'Tightening urban air-quality mandates restricting furnace oil and petcoke have accelerated corporate interest in Compressed Bio-Gas (CBG) and industrial biodiesel blends.',
+      'Yet transitioning plant boilers requires more than equipment retrofits: procurement directors must verify year-round agricultural residue feedstock resilience, calorific value consistency, and long-term price indexation against LDO and natural gas benchmarks.',
+      'Rosefield’s Energy Practice advises industrial buyers and bio-energy developers on structuring take-or-pay off-take contracts that balance carbon reduction targets with predictable plant operating economics.'
     ],
-    downloadable: true,
-    pagesCount: 22,
-    featured: false
-  },
-  {
-    id: 'market-biofuels-blending',
-    title: 'Market Intelligence: Biofuels & Compressed Bio-Gas (CBG) Integration in Industrial Energy',
-    slug: 'biofuels-compressed-bio-gas-integration-industrial-energy',
-    category: 'Fuels & Energy',
-    format: 'Intelligence Brief',
-    date: 'November 2025',
-    readTime: '10 min read',
-    summary: 'Evaluating feedstock availability, off-take guarantees, and tariff structures for industrial boilers transitioning from furnace oil to CBG and biodiesel.',
+    takeaways: [
+      'Dual-fuel burner flexibility protects plant uptime during seasonal agricultural feedstock transitions.',
+      'Long-term CBG off-take contracts benefit from transparent indexation caps against benchmark industrial fuels.',
+      'Verified biofuel adoption delivers immediate Scope 1 emissions reductions for global export-oriented manufacturers.'
+    ],
     author: {
       name: 'Energy Practice Group',
       role: 'Rosefield Energy Tech'
     },
-    keyTakeaways: [
-      'Industrial clusters in Western and Southern India are seeing rapid payback on CBG retrofits under regional clean fuel policies.',
-      'Supply contract structuring with long-term indexation against fuel oil benchmarks remains key to bankability.'
-    ],
-    downloadable: true,
-    pagesCount: 19,
-    featured: false
+    image: logisticsPhoto
+  }
+];
+
+export const GALLERY_DATA: GalleryItem[] = [
+  {
+    id: 'gal-mumbai-summit-plenary',
+    figNumber: 'Fig. 01',
+    title: 'India Lubricants & Base Oils Leadership Summit — Keynote Panel',
+    category: 'Summits & Forums',
+    date: 'October 2026',
+    location: 'The St. Regis, Mumbai',
+    caption: 'Fig. 01 · Executive plenary dialogue on base oil supply chains and circular mandates',
+    description: 'Over 500 delegates from oil marketing companies, global base oil producers, additive specialists, and re-refiners convened in Mumbai for Rosefield’s annual flagship leadership summit.',
+    image: summitPhoto,
+    aspect: 'wide'
+  },
+  {
+    id: 'gal-hydrotreating-columns',
+    figNumber: 'Fig. 02',
+    title: 'Modern Vacuum Distillation & Hydro-Finishing Re-Refinery',
+    category: 'Refining & Lab',
+    date: 'September 2026',
+    location: 'Western Industrial Corridor, Gujarat',
+    caption: 'Fig. 02 · High-yield Group II+ re-refining columns operating at golden hour',
+    description: 'Partner re-refining infrastructure utilizing wiped-film distillation and catalytic hydro-treating to convert verified used oil into virgin-parity Group II+ base stocks.',
+    image: plantPhoto,
+    aspect: 'standard'
+  },
+  {
+    id: 'gal-formulation-viscometry',
+    figNumber: 'Fig. 03',
+    title: 'Base Stock Quality & Kinematic Viscosity Benchmarking Lab',
+    category: 'Refining & Lab',
+    date: 'August 2026',
+    location: 'Navi Mumbai Technical Center',
+    caption: 'Fig. 03 · Comparative oxidation and viscometric profiling of Group II and RRBO samples',
+    description: 'Independent laboratory validation verifying color stability, Noack volatility, saturates content, and RPVOT oxidation resistance across virgin and re-refined base oil batches.',
+    image: labPhoto,
+    aspect: 'standard'
+  },
+  {
+    id: 'gal-recyklube-collection-bay',
+    figNumber: 'Fig. 04',
+    title: 'RecykLube Authorized Service Hub & Sealed IBC Aggregation',
+    category: 'RecykLube Operations',
+    date: 'October 2026',
+    location: 'Pune Automotive Cluster',
+    caption: 'Fig. 04 · QR-manifested used oil storage and zero-spill collection bay',
+    description: 'Standardized sealed stainless IBC totes and barcoded drum aggregation at a Tier-1 dealership service bay integrated into the RecykLube EPR traceability network.',
+    image: logisticsPhoto,
+    aspect: 'standard'
+  },
+  {
+    id: 'gal-ev-dielectric-fluid',
+    figNumber: 'Fig. 05',
+    title: 'Direct-Cooled EV Stator & Dielectric Fluid Flow Study',
+    category: 'Technical & EV',
+    date: 'November 2026',
+    location: 'Bengaluru Drivetrain Lab',
+    caption: 'Fig. 05 · Thermal dissipation and copper compatibility testing for e-axle fluids',
+    description: 'Studio and bench documentation examining ultra-low-viscosity dielectric thermal fluids engineered for high-voltage electric vehicle motor windings.',
+    image: evFluidPhoto,
+    aspect: 'wide'
   }
 ];
 

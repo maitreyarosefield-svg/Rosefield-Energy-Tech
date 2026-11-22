@@ -3,7 +3,6 @@ import { PageRoute } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { EnquiryModal } from './components/EnquiryModal';
-import { ReportModal } from './components/ReportModal';
 import { EventModal } from './components/EventModal';
 import { EprCalculatorModal } from './components/EprCalculatorModal';
 import { SearchModal } from './components/SearchModal';
@@ -12,20 +11,23 @@ import { SearchModal } from './components/SearchModal';
 import { HomeView } from './views/HomeView';
 import { AboutView } from './views/AboutView';
 import { ServicesView } from './views/ServicesView';
-import { IndustriesView } from './views/IndustriesView';
 import { RecykLubeView } from './views/RecykLubeView';
-import { InsightsView } from './views/InsightsView';
+import { NewsView } from './views/NewsView';
+import { BlogsView } from './views/BlogsView';
+import { GalleryView } from './views/GalleryView';
 import { EventsView } from './views/EventsView';
 import { SustainabilityView } from './views/SustainabilityView';
 import { ContactView } from './views/ContactView';
 
-import { Sparkles, Calculator, MessageSquare, ArrowUp } from 'lucide-react';
+import { Sparkles, ArrowUp } from 'lucide-react';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>('home');
   const [enquiryArea, setEnquiryArea] = useState<string | undefined>(undefined);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
-  const [activeReportId, setActiveReportId] = useState<string | null>(null);
+  const [activeNewsId, setActiveNewsId] = useState<string | null>(null);
+  const [activeBlogId, setActiveBlogId] = useState<string | null>(null);
+  const [activeGalleryId, setActiveGalleryId] = useState<string | null>(null);
   const [activeEventId, setActiveEventId] = useState<string | null>(null);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -46,11 +48,7 @@ export default function App() {
   // Track scroll position for floating action
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 400);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -58,6 +56,9 @@ export default function App() {
 
   const handleRouteChange = (route: PageRoute) => {
     setCurrentRoute(route);
+    setActiveNewsId(null);
+    setActiveBlogId(null);
+    setActiveGalleryId(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -66,8 +67,22 @@ export default function App() {
     setIsEnquiryOpen(true);
   };
 
-  const handleOpenReport = (reportId: string) => {
-    setActiveReportId(reportId);
+  const handleOpenNews = (newsId?: string) => {
+    setActiveNewsId(newsId || null);
+    setCurrentRoute('news');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOpenBlog = (blogId?: string) => {
+    setActiveBlogId(blogId || null);
+    setCurrentRoute('blogs');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOpenGallery = (galleryId?: string) => {
+    setActiveGalleryId(galleryId || null);
+    setCurrentRoute('gallery');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleOpenEvent = (eventId: string) => {
@@ -80,7 +95,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#242424] flex flex-col font-sans selection:bg-[#F8D8A0] selection:text-[#242424]">
-      
       {/* Top Corporate Executive Navbar */}
       <Navbar
         currentRoute={currentRoute}
@@ -96,7 +110,9 @@ export default function App() {
           <HomeView
             onRouteChange={handleRouteChange}
             onOpenEnquiry={handleOpenEnquiry}
-            onOpenReport={handleOpenReport}
+            onOpenNews={handleOpenNews}
+            onOpenBlog={handleOpenBlog}
+            onOpenGallery={handleOpenGallery}
             onOpenEvent={handleOpenEvent}
             onOpenCalculator={handleOpenCalculator}
           />
@@ -117,13 +133,6 @@ export default function App() {
           />
         )}
 
-        {currentRoute === 'industries' && (
-          <IndustriesView
-            onRouteChange={handleRouteChange}
-            onOpenEnquiry={handleOpenEnquiry}
-          />
-        )}
-
         {currentRoute === 'recyklube' && (
           <RecykLubeView
             onRouteChange={handleRouteChange}
@@ -132,11 +141,24 @@ export default function App() {
           />
         )}
 
-        {currentRoute === 'insights' && (
-          <InsightsView
-            onRouteChange={handleRouteChange}
-            onOpenReport={handleOpenReport}
+        {currentRoute === 'news' && (
+          <NewsView
             onOpenEnquiry={handleOpenEnquiry}
+            initialNewsId={activeNewsId}
+          />
+        )}
+
+        {currentRoute === 'blogs' && (
+          <BlogsView
+            onOpenEnquiry={handleOpenEnquiry}
+            initialBlogId={activeBlogId}
+          />
+        )}
+
+        {currentRoute === 'gallery' && (
+          <GalleryView
+            onOpenEnquiry={handleOpenEnquiry}
+            initialItemId={activeGalleryId}
           />
         )}
 
@@ -165,6 +187,7 @@ export default function App() {
       <Footer
         onRouteChange={handleRouteChange}
         onOpenEnquiry={handleOpenEnquiry}
+        onOpenCalculator={handleOpenCalculator}
       />
 
       {/* Floating Quick Action Tools for B2B Users */}
@@ -191,48 +214,34 @@ export default function App() {
         </button>
       </div>
 
-      {/* ============================================================ */}
-      {/* GLOBAL MODALS                                                */}
-      {/* ============================================================ */}
-      
-      {/* 1. Global B2B Lead Form Modal */}
+      {/* Global Modals */}
       <EnquiryModal
         isOpen={isEnquiryOpen}
         onClose={() => setIsEnquiryOpen(false)}
         initialArea={enquiryArea}
       />
 
-      {/* 2. Gated Report Abstract & Lead Modal */}
-      <ReportModal
-        reportId={activeReportId}
-        onClose={() => setActiveReportId(null)}
-        onOpenEnquiry={handleOpenEnquiry}
-      />
-
-      {/* 3. Event Details & Registration Modal */}
       <EventModal
         eventId={activeEventId}
         onClose={() => setActiveEventId(null)}
         onOpenEnquiry={handleOpenEnquiry}
       />
 
-      {/* 4. Interactive EPR & Carbon Abatement Estimator Modal */}
       <EprCalculatorModal
         isOpen={isCalculatorOpen}
         onClose={() => setIsCalculatorOpen(false)}
         onOpenEnquiry={handleOpenEnquiry}
       />
 
-      {/* 5. Global Command-Palette Search Modal */}
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onRouteChange={handleRouteChange}
-        onOpenReport={handleOpenReport}
+        onOpenNews={handleOpenNews}
+        onOpenBlog={handleOpenBlog}
+        onOpenGallery={handleOpenGallery}
         onOpenEvent={handleOpenEvent}
-        onOpenEnquiry={handleOpenEnquiry}
       />
-
     </div>
   );
 }

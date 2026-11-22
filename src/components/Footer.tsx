@@ -161,11 +161,6 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNavigate('industries')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
-                  Industry Ecosystem
-                </button>
-              </li>
-              <li>
                 <button onClick={() => handleNavigate('contact')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
                   Contact & Locations
                 </button>
@@ -196,8 +191,8 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNavigate('insights')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left flex items-center justify-between w-full group">
-                  <span>Publications & Market Intelligence</span>
+                <button onClick={() => handleNavigate('news')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left flex items-center justify-between w-full group">
+                  <span>Industry News & Briefings</span>
                   <span className="text-[10px] text-[#E8E6E1]/40 font-mono">[04]</span>
                 </button>
               </li>
@@ -215,21 +210,26 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 4: Resources & Engagement (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-[10px] font-sans font-bold text-[#E8E6E1]/60 uppercase tracking-[0.25em]">Resources & Tools</h4>
+            <h4 className="text-[10px] font-sans font-bold text-[#E8E6E1]/60 uppercase tracking-[0.25em]">Editorial & Archive</h4>
             <ul className="space-y-2 text-sm text-[#E8E6E1]/80">
-              <li>
-                <button onClick={() => handleNavigate('insights')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
-                  Market Reports & Outlooks
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('insights')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
-                  Regulatory & EPR Bulletins
-                </button>
-              </li>
               <li>
                 <button onClick={() => handleNavigate('events')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
                   Leadership Summits & Conclaves
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('blogs')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
+                  Technical & Strategy Blogs
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('gallery')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
+                  Summits & Field Gallery
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('news')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left">
+                  Regulatory & Industry News
                 </button>
               </li>
               <li>
