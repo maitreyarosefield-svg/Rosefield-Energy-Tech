@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className={`w-full bg-[#F9F8F6]/95 backdrop-blur-md border-b transition-shadow duration-200 ${
         isScrolled ? 'shadow-sm border-[#1D1D1B]/15' : 'border-[#1D1D1B]/10'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-20 sm:h-22 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-22 sm:h-24 flex items-center justify-between">
           
           {/* Brand Logo */}
           <button 
@@ -296,17 +296,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
-              onClick={() => handleNavClick('sustainability')}
-              className={`px-3 py-2 rounded-sm transition-colors cursor-pointer ${
-                currentRoute === 'sustainability' 
-                  ? 'text-[#1D1D1B] font-semibold bg-[#E8E6E1]/60' 
-                  : 'hover:text-[#1D1D1B] hover:bg-[#E8E6E1]/40'
-              }`}
-            >
-              Sustainability
-            </button>
-
-            <button
               onClick={() => handleNavClick('contact')}
               className={`px-3 py-2 rounded-sm transition-colors cursor-pointer ${
                 currentRoute === 'contact' 
@@ -330,15 +319,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden xl:inline text-[10px] text-[#1D1D1B]/60 font-mono bg-white px-1.5 py-0.5 rounded border border-[#1D1D1B]/10">
                 ⌘K
               </span>
-            </button>
-
-            {/* Primary B2B CTA */}
-            <button
-              onClick={() => onOpenEnquiry()}
-              className="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#1D1D1B] text-[#F9F8F6] hover:bg-black font-sans font-medium text-xs uppercase tracking-[0.15em] transition-all shadow-xs hover:shadow-md cursor-pointer border border-[#1D1D1B] group"
-            >
-              <span>Connect With Us</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#E8E6E1] group-hover:translate-x-0.5 transition-transform" />
             </button>
 
             {/* Mobile Menu Button */}
@@ -400,10 +380,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               Events & Summits
             </button>
             <button
-              onClick={() => handleNavClick('sustainability')}
-              className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'sustainability' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
+              onClick={() => handleNavClick('contact')}
+              className={`p-3 rounded-lg text-left font-medium text-sm ${currentRoute === 'contact' ? 'bg-[#E8E6E1] text-[#1D1D1B] font-bold' : 'text-[#1D1D1B]/80'}`}
             >
-              Sustainability & EPR
+              Contact
             </button>
           </div>
 

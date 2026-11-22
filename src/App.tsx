@@ -87,6 +87,7 @@ export default function App() {
         onRouteChange={handleRouteChange}
         onOpenEnquiry={() => handleOpenEnquiry()}
         onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenCalculator={handleOpenCalculator}
       />
 
       {/* Main Dynamic View Content */}

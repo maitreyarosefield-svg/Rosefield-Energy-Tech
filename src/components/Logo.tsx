@@ -14,19 +14,19 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   const isFooter = variant === 'footer';
 
-  // Responsive heights tailored for navbar, drawers, and footer
+  // Responsive heights tailored for trimmed 913x260 logo in navbar, drawers, and footer
   const heightClasses = {
-    sm: 'h-10 max-w-[180px]',
-    md: 'h-13 sm:h-16 max-w-[280px]',
-    lg: 'h-16 sm:h-20 max-w-[340px]',
-    xl: 'h-20 sm:h-26 max-w-[420px]'
+    sm: 'h-9 sm:h-10 max-w-[160px]',
+    md: 'h-12 sm:h-14 max-w-[260px]',
+    lg: 'h-14 sm:h-16 max-w-[300px]',
+    xl: 'h-16 sm:h-20 max-w-[360px]'
   };
 
   const logoSrc = '/rosefield-logo.png';
   const cdnFallback = 'https://i.ibb.co/JW2bfV8q/Untitled-design-34.png';
 
   return (
-    <div className={`inline-flex items-center select-none ${isFooter ? 'bg-white px-3.5 py-2 rounded-2xl shadow-xs border border-white/10' : ''} ${className}`}>
+    <div className={`inline-flex items-center select-none ${isFooter ? 'bg-white px-5 py-3 rounded-2xl shadow-xs border border-white/10' : ''} ${className}`}>
       <img
         src={logoSrc}
         onError={(e) => {
