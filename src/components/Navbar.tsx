@@ -10,15 +10,19 @@ import {
   ArrowRight, 
   Mail, 
   Sparkles,
-  Compass,
-  Users,
+  ShieldCheck,
+  Droplets,
+  GraduationCap,
+  ClipboardCheck,
   RefreshCw,
-  BarChart3
+  RotateCw,
+  Calendar
 } from 'lucide-react';
 
 interface NavbarProps {
   currentRoute: PageRoute;
   onRouteChange: (route: PageRoute) => void;
+  onOpenService: (serviceId: ServiceVerticalId) => void;
   onOpenSearch: () => void;
   onOpenEnquiry: (prefilledArea?: string) => void;
   onOpenCalculator: () => void;
@@ -27,6 +31,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   currentRoute,
   onRouteChange,
+  onOpenService,
   onOpenSearch,
   onOpenEnquiry,
   onOpenCalculator
@@ -52,10 +57,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const getVerticalIcon = (id: ServiceVerticalId) => {
     switch (id) {
-      case 'events-platforms': return <Users className="w-4 h-4 text-[#F88058]" />;
-      case 'strategic-consultancy': return <Compass className="w-4 h-4 text-[#F8B848]" />;
-      case 'circular-epr': return <RefreshCw className="w-4 h-4 text-[#E85D36]" />;
-      case 'market-intelligence': return <BarChart3 className="w-4 h-4 text-[#F8B848]" />;
+      case 'epr-fulfillment': return <ShieldCheck className="w-4 h-4 text-[#E85D36]" />;
+      case 'used-oil-rrbo': return <Droplets className="w-4 h-4 text-[#F8B848]" />;
+      case 'training-certification': return <GraduationCap className="w-4 h-4 text-[#F88058]" />;
+      case 'technical-audits': return <ClipboardCheck className="w-4 h-4 text-[#E85D36]" />;
+      case 'circular-economy': return <RefreshCw className="w-4 h-4 text-[#F8B848]" />;
+      case 'r3t': return <RotateCw className="w-4 h-4 text-[#F88058]" />;
+      case 'ce-events': return <Calendar className="w-4 h-4 text-[#F8B848]" />;
     }
   };
 
@@ -154,30 +162,36 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Mega Dropdown Menu */}
               {activeDropdown === 'services' && (
-                <div className="absolute top-full left-0 w-96 bg-[#F9F8F6] rounded-xl shadow-xl border border-[#1D1D1B]/15 p-3 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                <div className="absolute top-full left-0 w-[560px] bg-[#F9F8F6] rounded-xl shadow-xl border border-[#1D1D1B]/15 p-3 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
                   <div className="px-3 py-2 border-b border-[#1D1D1B]/10 mb-2 flex items-center justify-between">
-                    <span className="text-[10px] font-sans font-bold text-[#1D1D1B]/60 uppercase tracking-[0.25em]">Four Business Verticals</span>
+                    <span className="text-[10px] font-sans font-bold text-[#1D1D1B]/60 uppercase tracking-[0.25em]">Our 7 Services</span>
                     <button 
                       onClick={() => handleNavClick('services')} 
-                      className="text-xs text-[#1D1D1B] font-medium hover:underline underline-offset-4 inline-flex items-center gap-1"
+                      className="text-xs text-[#1D1D1B] font-medium hover:underline underline-offset-4 inline-flex items-center gap-1 cursor-pointer"
                     >
                       View All <ArrowRight className="w-3 h-3" />
                     </button>
                   </div>
-                  <div className="space-y-1">
-                    {SERVICE_VERTICALS.map((vert) => (
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {SERVICE_VERTICALS.map((vert, idx) => (
                       <button
                         key={vert.id}
-                        onClick={() => handleNavClick('services')}
-                        className="w-full text-left p-2.5 rounded-lg hover:bg-[#E8E6E1]/70 transition-colors flex items-start gap-3 group"
+                        onClick={() => {
+                          setActiveDropdown(null);
+                          setIsMobileMenuOpen(false);
+                          onOpenService(vert.id);
+                        }}
+                        className={`w-full text-left p-2.5 rounded-lg hover:bg-[#E8E6E1]/70 transition-colors flex items-start gap-2.5 group cursor-pointer ${
+                          idx === SERVICE_VERTICALS.length - 1 ? 'col-span-2' : ''
+                        }`}
                       >
                         <div className="p-1.5 rounded-md bg-[#E8E6E1] border border-[#1D1D1B]/10 shrink-0 mt-0.5">
                           {getVerticalIcon(vert.id)}
                         </div>
-                        <div>
-                          <div className="font-serif font-semibold text-sm text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors flex items-center gap-2">
-                            <span>{vert.title}</span>
-                            <span className="text-[10px] font-mono text-[#1D1D1B]/40">[{vert.number}]</span>
+                        <div className="min-w-0">
+                          <div className="font-serif font-semibold text-sm text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors flex items-center gap-1.5">
+                            <span className="truncate">{vert.title}</span>
+                            <span className="text-[10px] font-mono text-[#1D1D1B]/40 shrink-0">[{vert.number}]</span>
                           </div>
                           <p className="text-xs text-[#1D1D1B]/60 line-clamp-1 mt-0.5">{vert.tagline}</p>
                         </div>

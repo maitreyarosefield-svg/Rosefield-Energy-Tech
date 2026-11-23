@@ -11,10 +11,13 @@ export type PageRoute =
   | 'contact';
 
 export type ServiceVerticalId = 
-  | 'events-platforms'
-  | 'strategic-consultancy'
-  | 'circular-epr'
-  | 'market-intelligence';
+  | 'epr-fulfillment'
+  | 'used-oil-rrbo'
+  | 'training-certification'
+  | 'technical-audits'
+  | 'circular-economy'
+  | 'r3t'
+  | 'ce-events';
 
 export interface ServiceVertical {
   id: ServiceVerticalId;

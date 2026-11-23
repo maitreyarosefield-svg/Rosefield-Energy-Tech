@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageRoute } from '../types';
+import { PageRoute, ServiceVerticalId } from '../types';
 import { 
   SERVICE_VERTICALS, 
   RECYKLUBE_STEPS, 
@@ -25,6 +25,8 @@ import {
   Compass, 
   BarChart3, 
   RefreshCw, 
+  GraduationCap,
+  ClipboardCheck,
   Download,
   Building2,
   TreePine
@@ -32,6 +34,7 @@ import {
 
 interface HomeViewProps {
   onRouteChange: (route: PageRoute) => void;
+  onOpenService: (serviceId: ServiceVerticalId) => void;
   onOpenEnquiry: (area?: string) => void;
   onOpenNews: (newsId?: string) => void;
   onOpenBlog: (blogId?: string) => void;
@@ -42,6 +45,7 @@ interface HomeViewProps {
 
 export const HomeView: React.FC<HomeViewProps> = ({
   onRouteChange,
+  onOpenService,
   onOpenEnquiry,
   onOpenNews,
   onOpenBlog,
@@ -52,10 +56,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   const getVerticalIcon = (id: string) => {
     switch (id) {
-      case 'events-platforms': return <Users className="w-5 h-5 text-[#F88058]" />;
-      case 'strategic-consultancy': return <Compass className="w-5 h-5 text-[#F8B848]" />;
-      case 'circular-epr': return <RefreshCw className="w-5 h-5 text-[#E85D36]" />;
-      case 'market-intelligence': return <BarChart3 className="w-5 h-5 text-[#F8B848]" />;
+      case 'epr-fulfillment': return <ShieldCheck className="w-5 h-5 text-[#E85D36]" />;
+      case 'used-oil-rrbo': return <Droplets className="w-5 h-5 text-[#F8B848]" />;
+      case 'training-certification': return <GraduationCap className="w-5 h-5 text-[#F88058]" />;
+      case 'technical-audits': return <ClipboardCheck className="w-5 h-5 text-[#E85D36]" />;
+      case 'circular-economy': return <RefreshCw className="w-5 h-5 text-[#F8B848]" />;
+      case 'r3t': return <RotateCw className="w-5 h-5 text-[#F88058]" />;
+      case 'ce-events': return <Calendar className="w-5 h-5 text-[#F8B848]" />;
       default: return <Sparkles className="w-5 h-5 text-[#F88058]" />;
     }
   };
@@ -294,20 +301,20 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* ============================================================ */}
-      {/* SECTION 3: WHAT WE DO — 4 BUSINESS VERTICALS (PRD Section 9) */}
+      {/* SECTION 3: OUR SERVICES — 7 CORE PRACTICES                   */}
       {/* ============================================================ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#1D1D1B]/10 pb-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F2EFE9] text-[#1D1D1B] text-[10px] font-sans font-bold uppercase tracking-[0.25em] mb-2 border border-[#1D1D1B]/10">
-              <span>Four Key Business Verticals</span>
+              <span>Our Services • 7 Core Practices</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1D1D1B] font-medium tracking-tight">
               Comprehensive B2B Solutions & Expertise
             </h2>
             <p className="text-[#1D1D1B]/60 text-sm mt-1 max-w-xl font-sans">
-              Engineered specifically for manufacturers, refiners, recyclers, and corporate decision-makers across the energy spectrum.
+              Engineered specifically for lubricant producers, refiners, recyclers, and corporate decision-makers across the circular energy spectrum.
             </p>
           </div>
 
@@ -323,12 +330,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </button>
         </div>
 
-        {/* 4 Distinct Cards */}
+        {/* 7 Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {SERVICE_VERTICALS.map((vert) => (
+          {SERVICE_VERTICALS.map((vert, idx) => (
             <div 
               key={vert.id}
-              className="p-8 rounded-3xl bg-white border border-[#1D1D1B]/10 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+              className={`p-8 rounded-3xl bg-white border border-[#1D1D1B]/10 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group ${
+                idx === SERVICE_VERTICALS.length - 1 ? 'md:col-span-2' : ''
+              }`}
             >
               <div className="space-y-4">
                 
@@ -384,13 +393,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className="pt-6 mt-6 border-t border-[#1D1D1B]/10 flex items-center justify-between">
                 <button
                   onClick={() => {
-                    if (vert.id === 'events-platforms') onRouteChange('events');
-                    else if (vert.id === 'circular-epr') onRouteChange('recyklube');
-                    else if (vert.id === 'market-intelligence') onRouteChange('news');
-                    else onRouteChange('services');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    if (vert.id === 'ce-events') {
+                      onRouteChange('events');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (vert.id === 'r3t') {
+                      onRouteChange('recyklube');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                      onOpenService(vert.id);
+                    }
                   }}
-                  className="px-5 py-2.5 rounded-full bg-[#1D1D1B] hover:bg-black text-[#F9F8F6] text-xs font-sans font-bold uppercase tracking-[0.15em] transition-colors flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-2.5 rounded-full bg-[#1D1D1B] hover:bg-black text-[#F9F8F6] text-xs font-sans font-bold uppercase tracking-[0.15em] transition-colors flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
                 >
                   <span>{vert.ctaText}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#E8E6E1]" />

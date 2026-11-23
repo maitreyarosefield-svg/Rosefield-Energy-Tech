@@ -30,123 +30,207 @@ export const TRUST_STATS: TrustStat[] = [
 
 export const SERVICE_VERTICALS: ServiceVertical[] = [
   {
-    id: 'events-platforms',
+    id: 'epr-fulfillment',
     number: '01',
-    title: 'Events & Knowledge Platforms',
-    tagline: 'High-level summits, technical roundtables, and strategic industry networking.',
-    description: 'We conceive, curate, and host premier B2B industry conferences, executive roundtables, technology showcases, and policy dialogues. Our platforms bring together C-level leaders, technical authorities, policymakers, and global suppliers to debate market disruptions and catalyze commercial partnerships.',
-    iconName: 'Users',
+    title: 'EPR Fulfillment',
+    tagline: 'End-to-end Extended Producer Responsibility planning, credit procurement, and statutory filing.',
+    description: 'Comprehensive EPR compliance management for lubricant producers, importers, and brand owners under CPCB Used Oil regulations. We structure target quantification, verified recycler partnerships, digital credit reconciliation, and audit-ready regulatory submissions.',
+    iconName: 'ShieldCheck',
     capabilities: [
-      'Flagship Industrial Conferences & Summits',
-      'Exclusive CXO Strategic Roundtables',
-      'Technical Seminars & Technology Masterclasses',
-      'Ecosystem Networking & B2B Matchmaking',
-      'Technology Showcases & Exhibition Management',
-      'Thought-Leadership & Policy Working Groups'
+      'CPCB Portal Registration & Annual Return Filings',
+      'Producer-Specific EPR Target Quantification & Forecasting',
+      'Verified EPR Certificate Sourcing & Credit Reconciliation',
+      'Multi-State Recycler Network Aggregation & Contracting',
+      'Digital Chain-of-Custody & Mass-Balance Documentation',
+      'Regulatory Compliance Audits & Penalty Mitigation'
     ],
     keyOutcomes: [
-      'Direct access to target enterprise decision-makers',
-      'First-hand exposure to upcoming regulatory and technical mandates',
-      'Bilateral business development and joint-venture origination'
+      '100% timely compliance with statutory EPR used oil mandates',
+      'Transparent, trace-verified EPR certificate procurement',
+      'Zero regulatory friction across state and central pollution boards'
     ],
     targetAudience: [
-      'CEOs & Managing Directors',
-      'Technical & R&D Heads',
-      'Global Base Oil & Additive Suppliers',
-      'OEM Commercial Teams'
+      'Lubricant Producers & Marketers',
+      'Base Oil & Finished Lube Importers',
+      'Automotive & Industrial OEMs',
+      'Corporate Sustainability & Legal Leads'
     ],
-    caseSnippet: 'Convened over 450 global delegates at the India Lubricants & Base Oils Conclave, facilitating 80+ cross-border technology and supply discussions.',
-    ctaText: 'Explore Events'
+    caseSnippet: 'Delivered full-cycle EPR fulfillment and verified credit reconciliation across 14 Indian states for a leading synthetic lubricant marketer.',
+    ctaText: 'Explore EPR Fulfillment'
   },
   {
-    id: 'strategic-consultancy',
+    id: 'used-oil-rrbo',
     number: '02',
-    title: 'Strategic & Technical Consultancy',
-    tagline: 'End-to-end commercial strategy, value engineering, and technical advisory.',
-    description: 'We deliver bespoke management consulting and technical advisory tailored strictly to the lubricants, fuels, specialty chemicals, and energy sectors. From market entry and portfolio optimization to M&A due diligence and value engineering, we provide actionable intelligence backed by deep operational knowledge.',
-    iconName: 'Compass',
+    title: 'Used Oil Collection & RRBO Enablement',
+    tagline: 'Structuring organized reverse logistics and high-grade Re-Refined Base Oil (RRBO) supply chains.',
+    description: 'We bridge the gap between fragmented used oil generation hubs and authorized re-refining facilities. Our enablement framework establishes compliant collection networks, quality-assured feedstock aggregation, and commercial RRBO offtake agreements for lubricant blenders.',
+    iconName: 'Droplets',
     capabilities: [
-      'Market Entry & Geographic Expansion Strategy',
-      'Product Portfolio Rationalisation & Formulation Advisory',
-      'Value Engineering & Supply Chain Optimization',
-      'Commercial Strategy & Go-To-Market Execution',
-      'Competitor Benchmarking & Pricing Intelligence',
-      'M&A Advisory, Technical Due Diligence & Partner Scouting',
-      'Plant Assessment & Quality Standardisation Advisory'
+      'Authorized Collection Partner Onboarding & Route Design',
+      'Bulk Generator Aggregation (Workshops, Fleets, Industrial Plants)',
+      'Used Oil Feedstock Quality Screening & Moisture Control',
+      'RRBO Offtake Structuring Between Re-Refiners & Blenders',
+      'Formulation Integration & Group II-Equivalent Blending Support',
+      'Closed-Loop Reverse Logistics & Container Tracking'
     ],
     keyOutcomes: [
-      'Accelerated market penetration with mitigated regulatory friction',
-      'Cost reduction through formulation rationalisation and local sourcing',
-      'Rigorous commercial and technical validation for M&A transactions'
+      'Consistent, contaminant-controlled used oil feedstock streams',
+      'Bankable RRBO supply-demand linkage for circular lubricant blending',
+      'Formalisation of informal collection channels into compliant networks'
     ],
     targetAudience: [
-      'Lubricant Brand Owners & Blenders',
-      'Private Equity & Infrastructure Investors',
-      'Specialty Chemical Manufacturers',
-      'Energy Conglomerates'
+      'Authorized Used Oil Re-Refiners',
+      'Lubricant Blenders Adopting RRBO',
+      'Fleet Operators & Service Aggregators',
+      'Authorized Waste Oil Collectors'
     ],
-    caseSnippet: 'Advised a Tier-1 European lubricant manufacturer on entering the Indian industrial OEM sector, establishing distribution and OEM approvals within 14 months.',
-    ctaText: 'Explore Consulting'
+    caseSnippet: 'Enabled a closed-loop collection and RRBO offtake corridor aggregating over 4.2 million litres annually for industrial re-refining.',
+    ctaText: 'Explore Collection & RRBO'
   },
   {
-    id: 'circular-epr',
+    id: 'training-certification',
     number: '03',
-    title: 'Circular Economy & EPR Advisory',
-    tagline: 'Navigating Extended Producer Responsibility, used oil tracking, and resource recovery.',
-    description: 'With increasing regulatory scrutiny around hazardous waste and circular mandates, Rosefield advises producers, recyclers, and corporate generators on structuring compliant, audit-ready EPR frameworks, reverse logistics, and closed-loop recycling systems.',
+    title: 'Training & Professional Certification',
+    tagline: 'Specialised technical masterclasses, EPR compliance workshops, and industry credentials.',
+    description: 'Targeted capacity-building programs engineered for lubricant technologists, plant managers, environmental officers, and commercial teams. Our structured courses and certification tracks build hands-on mastery in formulation, tribology, used oil testing, and circular governance.',
+    iconName: 'GraduationCap',
+    capabilities: [
+      'EPR Compliance & CPCB Portal Execution Workshops',
+      'Lubricant Formulation, Additive Chemistry & Tribology Modules',
+      'Re-Refining Process Engineering & Quality Control Training',
+      'Bulk Generator Hazardous Waste Handling Certification',
+      'In-House Corporate Technical Upskilling Programs',
+      'Executive Masterclasses on EV Fluids & Bio-Lubricants'
+    ],
+    keyOutcomes: [
+      'Certified operational readiness for compliance and plant teams',
+      'Reduced formulation errors and improved lab testing proficiency',
+      'Standardized SOP adoption across distributed dealer and workshop networks'
+    ],
+    targetAudience: [
+      'Blending Plant Engineers & QC Chemists',
+      'EHS & Regulatory Compliance Officers',
+      'Re-Refining Technical Operators',
+      'B2B Technical Sales & OEM Support Teams'
+    ],
+    caseSnippet: 'Trained and certified over 320 plant chemists, compliance officers, and service network leads across regional technical bootcamps.',
+    ctaText: 'Explore Training Programs'
+  },
+  {
+    id: 'technical-audits',
+    number: '04',
+    title: 'Technical Audits & Compliant',
+    tagline: 'Independent plant assessments, lab QA/QC verification, and environmental compliance audits.',
+    description: 'Rigorous third-party technical and statutory audits for blending plants, used oil re-refineries, and storage depots. We evaluate process efficiency, feedstock mass balance, laboratory accreditation readiness, and environmental safeguards to ensure bankable operational compliance.',
+    iconName: 'ClipboardCheck',
+    capabilities: [
+      'Re-Refining Plant Technical Capacity & Mass-Balance Audits',
+      'Lubricant Blending Plant SOP & Quality Assurance Reviews',
+      'Hazardous Waste Storage, Manifest & Safety Audits',
+      'Pre-Onboarding Vendor & Recycler Qualification Inspections',
+      'Laboratory Instrumentation & ASTM Testing Readiness Checks',
+      'Gap Analysis & Corrective Action Roadmap Implementation'
+    ],
+    keyOutcomes: [
+      'Verified, audit-grade assurance before onboarding recycling partners',
+      'Identified yield improvements and process energy savings in refineries',
+      'Full readiness for statutory inspections and OEM vendor approvals'
+    ],
+    targetAudience: [
+      'Producers Vetting Recycling Partners',
+      'Used Oil Re-Refining & Blending Facilities',
+      'Private Equity & M&A Technical Diligence Teams',
+      'Industrial ESG & Risk Committees'
+    ],
+    caseSnippet: 'Completed independent mass-balance and environmental compliance audits across 28 authorised re-refining facilities nationwide.',
+    ctaText: 'Explore Technical Audits'
+  },
+  {
+    id: 'circular-economy',
+    number: '05',
+    title: 'Circular Economy',
+    tagline: 'Strategic decarbonisation, Scope 3 reduction, and circular transition roadmaps for energy.',
+    description: 'We help lubricant, chemical, and industrial enterprises transition from linear resource consumption to regenerative circular models. Our advisory integrates lifecycle assessment, RRBO incorporation strategies, packaging circularity, and corporate ESG alignment.',
     iconName: 'RefreshCw',
     capabilities: [
-      'EPR Policy Compliance & Target Obligation Audits',
-      'Used Oil Reverse Logistics & Collection Network Design',
-      'Traceability & Digital Manifest Chain-of-Custody',
-      'Re-refiner Vetting & Technical Capability Audits',
-      'Closed-Loop Recycling & Resource Recovery Roadmaps',
-      'Sustainability & Scope 3 Decarbonisation Frameworks',
-      'Regulatory Representation & Stakeholder Coordination'
+      'Corporate Circular Economy Strategy & Transition Roadmaps',
+      'Scope 3 Carbon Abatement & Lifecycle Assessment (LCA) Modelling',
+      'Circular Packaging & Drum/IBC Reconditioning Frameworks',
+      'Closed-Loop Industrial Fluid Management Programs',
+      'Policy Advocacy & Regulatory Working Group Representation',
+      'ESG Reporting Metrics & Circularity Benchmarking'
     ],
     keyOutcomes: [
-      '100% compliance with statutory EPR targets without operational disruption',
-      'Transparent, digitally verified used oil recovery chains',
-      'Substantial reduction in corporate Scope 3 carbon footprint via re-refined base oils (RRBO)'
+      'Measurable Scope 3 GHG reductions aligned with net-zero pledges',
+      'Commercialised circular product lines with verified sustainability claims',
+      'Long-term raw material resilience via secondary base oil adoption'
     ],
     targetAudience: [
-      'EPR Obligated Lubricant Producers & Importers',
-      'Automotive & Industrial OEMs with Generator Responsibilities',
-      'Authorized Used Oil Recyclers & Re-refiners',
-      'State & Central Regulatory Bodies'
+      'Chief Sustainability Officers (CSOs)',
+      'Global Energy & Lubricant Brand Owners',
+      'Heavy Manufacturing & Mining Enterprises',
+      'Institutional Policy & Industry Associations'
     ],
-    caseSnippet: 'Structured an integrated collection and recycling framework for an automotive OEM network across 12 states, achieving full EPR credit compliance.',
+    caseSnippet: 'Structured a multi-year circularity roadmap for a regional lubricant leader, targeting 25% RRBO content across industrial SKUs by 2028.',
     ctaText: 'Explore Circular Economy'
   },
   {
-    id: 'market-intelligence',
-    number: '04',
-    title: 'Publications & Market Intelligence',
-    tagline: 'Deep data, price trends, regulatory forecasts, and proprietary research.',
-    description: 'We publish authoritative market research reports, whitepapers, pricing trackers, and industry briefings. Our intelligence helps corporate leadership anticipate supply-demand shifts, monitor Group I/II/III base oil dynamics, and understand changing regulatory standards.',
-    iconName: 'BarChart3',
+    id: 'r3t',
+    number: '06',
+    title: 'R3T',
+    tagline: 'Recover, Re-refine, Reuse & Trace — our flagship digital and operational circular ecosystem.',
+    description: 'R3T powers transparent circularity across the used oil value chain through structured recovery, advanced re-refining linkages, compliant reuse, and end-to-end digital traceability. Designed to connect generators, collectors, re-refiners, and obligated producers on a single accountable framework.',
+    iconName: 'RotateCw',
     capabilities: [
-      'Syndicated Industry Research & Outlook Reports',
-      'Base Oil Supply-Demand & Price Trend Monitoring',
-      'Used Oil & Re-refining Market Assessments',
-      'Regulatory & Environmental Compliance Forecasts',
-      'Custom Commissioned Market Feasibility Studies',
-      'Quarterly Executive Briefings & Intelligence Bulletins',
-      'M&A Transaction Trackers & Valuation Multiples'
+      'End-to-End Digital Used Oil Manifest & Batch Traceability',
+      'Recover: Geo-Tagged Pickup Scheduling from Bulk Generators',
+      'Re-refine: Quality-Tracked Feedstock Routing to Vetted Refineries',
+      'Reuse: Certified RRBO Re-Integration into Commercial Lubricants',
+      'Trace: Immutable Audit Trail for CPCB & ESG Verification',
+      'Real-Time Credit Allocation & Stakeholder Analytics Dashboard'
     ],
     keyOutcomes: [
-      'Data-backed investment and capacity planning decisions',
-      'Early warning on raw material cost escalations and supply shortages',
-      'Clear visibility on emerging green lubricant formulations and alternatives'
+      'Elimination of informal leakage and unverified paper trails',
+      'Single-pane visibility from point of drain to re-refined base oil',
+      'Seamless synchronization between physical oil recovery and EPR credits'
     ],
     targetAudience: [
-      'Chief Strategy Officers & Procurement Heads',
-      'Base Oil Traders & Distributors',
-      'Institutional Investors & Equity Analysts',
-      'Corporate Affairs & Policy Directors'
+      'EPR Obligated Producers & Brand Owners',
+      'Authorized Collection & Re-Refining Partners',
+      'Automotive Dealership & Fleet Chains',
+      'Enterprise ESG Auditors'
     ],
-    caseSnippet: 'Published the definitive "India Used Oil Ecosystem & Re-refining Outlook 2025-2030", cited by leading energy boards and industry associations.',
-    ctaText: 'Explore News & Blogs'
+    caseSnippet: 'Tracked 14M+ litres across connected R3T recovery corridors, delivering verified traceability from service bays to re-refined output.',
+    ctaText: 'Explore R3T Platform'
+  },
+  {
+    id: 'ce-events',
+    number: '07',
+    title: 'CE Events',
+    tagline: 'Premier Circular Economy summits, policy roundtables, and cross-industry leadership forums.',
+    description: 'We conceive and execute dedicated Circular Economy (CE) conferences, regulator-industry dialogues, and technology showcases for the lubricants, fuels, and resource recovery sectors. Our events unite policymakers, OEMs, recyclers, and technology innovators to drive market action.',
+    iconName: 'Calendar',
+    capabilities: [
+      'Flagship Circular Economy & Used Oil Conclaves',
+      'Regulator-Industry Policy Roundtables & Working Sessions',
+      'Re-Refining Technology & Equipment Exhibitions',
+      'Structured B2B Matchmaking for Feedstock & EPR Partnerships',
+      'Executive Awards Recognising Circular Excellence',
+      'Co-Branded Knowledge Symposia & Panel Curation'
+    ],
+    keyOutcomes: [
+      'Direct engagement with regulators, OEMs, and C-suite decision-makers',
+      'High-intent commercial partnerships for technology and EPR alliances',
+      'Authoritative thought-leadership positioning across APAC & Middle East'
+    ],
+    targetAudience: [
+      'CEOs, Managing Directors & Policy Leaders',
+      'Re-Refining Technology & Licensing Providers',
+      'Lubricant Blenders, Collectors & Recyclers',
+      'Industry Associations & Institutional Sponsors'
+    ],
+    caseSnippet: 'Convened 450+ delegates and 35+ expert speakers at our flagship circular lubricants forum, catalysing multi-party EPR and technology MoUs.',
+    ctaText: 'Explore CE Events'
   }
 ];
 

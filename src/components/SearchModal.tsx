@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { PageRoute } from '../types';
+import { PageRoute, ServiceVerticalId } from '../types';
 import { SERVICE_VERTICALS, NEWS_DATA, BLOGS_DATA, GALLERY_DATA, EVENTS_DATA } from '../data/mockData';
 import {
   Search,
@@ -16,6 +16,7 @@ interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
   onRouteChange: (route: PageRoute) => void;
+  onOpenService: (serviceId: ServiceVerticalId) => void;
   onOpenNews: (newsId?: string) => void;
   onOpenBlog: (blogId?: string) => void;
   onOpenGallery: (galleryId?: string) => void;
@@ -26,6 +27,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   isOpen,
   onClose,
   onRouteChange,
+  onOpenService,
   onOpenNews,
   onOpenBlog,
   onOpenGallery,
@@ -259,7 +261,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                         key={vert.id}
                         onClick={() => {
                           onClose();
-                          onRouteChange('services');
+                          onOpenService(vert.id);
                         }}
                         className="w-full text-left p-3 rounded-2xl hover:bg-[#F9F8F6] transition-colors flex items-center justify-between group cursor-pointer border border-transparent hover:border-[#1D1D1B]/10"
                       >

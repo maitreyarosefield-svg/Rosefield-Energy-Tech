@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PageRoute } from './types';
+import { PageRoute, ServiceVerticalId } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { EnquiryModal } from './components/EnquiryModal';
@@ -25,6 +25,7 @@ export default function App() {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>('home');
   const [enquiryArea, setEnquiryArea] = useState<string | undefined>(undefined);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+  const [activeServiceId, setActiveServiceId] = useState<ServiceVerticalId>('epr-fulfillment');
   const [activeNewsId, setActiveNewsId] = useState<string | null>(null);
   const [activeBlogId, setActiveBlogId] = useState<string | null>(null);
   const [activeGalleryId, setActiveGalleryId] = useState<string | null>(null);
@@ -67,6 +68,12 @@ export default function App() {
     setIsEnquiryOpen(true);
   };
 
+  const handleOpenService = (serviceId: ServiceVerticalId) => {
+    setActiveServiceId(serviceId);
+    setCurrentRoute('services');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleOpenNews = (newsId?: string) => {
     setActiveNewsId(newsId || null);
     setCurrentRoute('news');
@@ -99,6 +106,7 @@ export default function App() {
       <Navbar
         currentRoute={currentRoute}
         onRouteChange={handleRouteChange}
+        onOpenService={handleOpenService}
         onOpenEnquiry={() => handleOpenEnquiry()}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenCalculator={handleOpenCalculator}
@@ -109,6 +117,7 @@ export default function App() {
         {currentRoute === 'home' && (
           <HomeView
             onRouteChange={handleRouteChange}
+            onOpenService={handleOpenService}
             onOpenEnquiry={handleOpenEnquiry}
             onOpenNews={handleOpenNews}
             onOpenBlog={handleOpenBlog}
@@ -130,6 +139,7 @@ export default function App() {
             onRouteChange={handleRouteChange}
             onOpenEnquiry={handleOpenEnquiry}
             onOpenCalculator={handleOpenCalculator}
+            initialVertical={activeServiceId}
           />
         )}
 
@@ -186,6 +196,7 @@ export default function App() {
       {/* Corporate Comprehensive Footer */}
       <Footer
         onRouteChange={handleRouteChange}
+        onOpenService={handleOpenService}
         onOpenEnquiry={handleOpenEnquiry}
         onOpenCalculator={handleOpenCalculator}
       />
@@ -237,6 +248,7 @@ export default function App() {
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onRouteChange={handleRouteChange}
+        onOpenService={handleOpenService}
         onOpenNews={handleOpenNews}
         onOpenBlog={handleOpenBlog}
         onOpenGallery={handleOpenGallery}

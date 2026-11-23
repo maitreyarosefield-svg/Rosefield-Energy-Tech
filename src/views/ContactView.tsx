@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { B2BEnquiryForm } from '../types';
-import { FAQ_LIST } from '../data/mockData';
+import { FAQ_LIST, SERVICE_VERTICALS } from '../data/mockData';
 import { 
   Building2, 
   MapPin, 
@@ -16,7 +16,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export const ContactView: React.FC<{ initialInterest?: string }> = ({ initialInterest = 'Strategic & Technical Consultancy' }) => {
+export const ContactView: React.FC<{ initialInterest?: string }> = ({ initialInterest = 'EPR Fulfillment' }) => {
   const [formData, setFormData] = useState<B2BEnquiryForm>({
     name: '',
     designation: '',
@@ -25,7 +25,7 @@ export const ContactView: React.FC<{ initialInterest?: string }> = ({ initialInt
     email: '',
     phone: '',
     country: 'India',
-    areaOfInterest: initialInterest || 'Strategic & Technical Consultancy',
+    areaOfInterest: initialInterest || 'EPR Fulfillment',
     message: '',
     newsletterOptIn: true
   });
@@ -230,11 +230,12 @@ export const ContactView: React.FC<{ initialInterest?: string }> = ({ initialInt
                     onChange={(e) => setFormData({ ...formData, areaOfInterest: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#D8D0C4] text-sm text-[#242424] focus:bg-white focus:outline-hidden focus:border-[#F88058] font-semibold"
                   >
-                    <option value="Strategic & Technical Consultancy">Strategic & Technical Consultancy (Market Entry, Value Engineering, M&A)</option>
-                    <option value="Circular Economy & EPR">Circular Economy & EPR Advisory (Target Audits, CPCB Compliance)</option>
+                    {SERVICE_VERTICALS.map((vert) => (
+                      <option key={vert.id} value={vert.title}>
+                        {vert.title}
+                      </option>
+                    ))}
                     <option value="RecykLube">RecykLube Circular Used Oil Ecosystem</option>
-                    <option value="Events & Conferences">Events & Conferences (Registration, Sponsorship, Speaker)</option>
-                    <option value="Market Intelligence & Reports">Market Intelligence & Publications (Custom Research, Reports)</option>
                     <option value="Partnerships & Business Development">Partnerships & Strategic Business Development</option>
                     <option value="Other">Other Requirement</option>
                   </select>

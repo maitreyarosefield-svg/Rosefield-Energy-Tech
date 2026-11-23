@@ -1,97 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageRoute, ServiceVerticalId } from '../types';
 import { SERVICE_VERTICALS } from '../data/mockData';
 import { 
-  Users, 
-  Compass, 
-  RefreshCw, 
-  BarChart3, 
+  ShieldCheck,
+  RotateCw,
+  Calendar,
   ArrowRight, 
   CheckCircle2, 
-  Award, 
   Building2, 
-  ShieldCheck, 
   Sparkles,
-  FileText
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 interface ServicesViewProps {
   onRouteChange: (route: PageRoute) => void;
   onOpenEnquiry: (area?: string) => void;
   onOpenCalculator: () => void;
+  initialVertical?: ServiceVerticalId;
 }
 
 export const ServicesView: React.FC<ServicesViewProps> = ({
   onRouteChange,
   onOpenEnquiry,
-  onOpenCalculator
+  onOpenCalculator,
+  initialVertical = 'epr-fulfillment'
 }) => {
-  const [selectedVertical, setSelectedVertical] = useState<ServiceVerticalId>('events-platforms');
+  const [selectedVertical, setSelectedVertical] = useState<ServiceVerticalId>(initialVertical);
 
-  const getVerticalIcon = (id: ServiceVerticalId) => {
-    switch (id) {
-      case 'events-platforms': return <Users className="w-5 h-5 text-[#F88058]" />;
-      case 'strategic-consultancy': return <Compass className="w-5 h-5 text-[#F8B848]" />;
-      case 'circular-epr': return <RefreshCw className="w-5 h-5 text-[#E85D36]" />;
-      case 'market-intelligence': return <BarChart3 className="w-5 h-5 text-[#F8B848]" />;
-    }
+  useEffect(() => {
+    setSelectedVertical(initialVertical);
+  }, [initialVertical]);
+
+  const activeIndex = Math.max(0, SERVICE_VERTICALS.findIndex(v => v.id === selectedVertical));
+  const activeVerticalData = SERVICE_VERTICALS[activeIndex] || SERVICE_VERTICALS[0];
+
+  const handleStepVertical = (direction: -1 | 1) => {
+    const nextIndex = (activeIndex + direction + SERVICE_VERTICALS.length) % SERVICE_VERTICALS.length;
+    setSelectedVertical(SERVICE_VERTICALS[nextIndex].id);
   };
 
-  const activeVerticalData = SERVICE_VERTICALS.find(v => v.id === selectedVertical) || SERVICE_VERTICALS[0];
-
   return (
-    <div className="space-y-20 sm:space-y-28 pb-20">
+    <div className="space-y-16 sm:space-y-20 pb-20">
       
       {/* Top Banner */}
       <section className="bg-[#242424] text-white py-16 sm:py-20 border-b border-[#3A3A3A] relative overflow-hidden">
         <div className="absolute -right-20 -top-20 w-80 h-80 bg-[#F88058]/20 rounded-full blur-3xl pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#383838] text-[#F8D8A0] text-xs font-bold uppercase tracking-wider">
-            <span>What We Do • 4 Core Business Verticals</span>
+            <span>Services • 7 Core Practices</span>
           </div>
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-white max-w-3xl leading-tight">
-            Specialised Consulting, Knowledge & Circular Solutions
+            Specialised Consulting, Compliance & Circular Solutions
           </h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-            Our multi-disciplinary practices provide end-to-end commercial strategy, technical due diligence, market intelligence, high-level summits, and verified EPR compliance frameworks.
+            Our integrated practices span EPR fulfillment, used oil collection & RRBO enablement, professional certification, technical audits, circular economy strategy, R3T traceability, and CE Events.
           </p>
-        </div>
-      </section>
-
-      {/* Vertical Selector Navigation Tabs */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {SERVICE_VERTICALS.map((vert) => {
-            const isSelected = vert.id === selectedVertical;
-            return (
-              <button
-                key={vert.id}
-                onClick={() => setSelectedVertical(vert.id)}
-                className={`p-5 rounded-2xl text-left transition-all cursor-pointer border flex flex-col justify-between space-y-2 ${
-                  isSelected
-                    ? 'bg-[#242424] text-white border-[#333] shadow-lg scale-[1.02]'
-                    : 'bg-white text-[#242424] border-[#EAE2D5] hover:border-stone-400 hover:shadow-xs'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className={`p-2 rounded-lg ${isSelected ? 'bg-[#333]' : 'bg-[#FBF3E6]'}`}>
-                    {getVerticalIcon(vert.id)}
-                  </div>
-                  <span className={`font-mono text-xs font-bold ${isSelected ? 'text-[#F88058]' : 'text-stone-400'}`}>
-                    [{vert.number}]
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg font-bold">
-                    {vert.title}
-                  </h3>
-                  <p className={`text-xs mt-1 line-clamp-2 ${isSelected ? 'text-stone-300' : 'text-stone-500'}`}>
-                    {vert.tagline}
-                  </p>
-                </div>
-              </button>
-            );
-          })}
         </div>
       </section>
 
@@ -101,9 +65,29 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
           
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[#F0EBE3]">
             <div className="space-y-2 max-w-2xl">
-              <span className="text-xs font-mono font-bold text-[#E85D36] uppercase tracking-wider">
-                VERTICAL {activeVerticalData.number} BRIEFING
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-[#E85D36] uppercase tracking-wider">
+                  SERVICE {activeVerticalData.number} BRIEFING
+                </span>
+                <div className="inline-flex items-center gap-1">
+                  <button
+                    onClick={() => handleStepVertical(-1)}
+                    className="p-1 rounded-md border border-[#EAE2D5] hover:bg-[#FAF8F5] text-stone-600 transition-colors cursor-pointer"
+                    aria-label="Previous service"
+                    title="Previous service"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => handleStepVertical(1)}
+                    className="p-1 rounded-md border border-[#EAE2D5] hover:bg-[#FAF8F5] text-stone-600 transition-colors cursor-pointer"
+                    aria-label="Next service"
+                    title="Next service"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#242424] font-bold">
                 {activeVerticalData.title}
               </h2>
@@ -113,18 +97,45 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              {activeVerticalData.id === 'circular-epr' && (
+              {(activeVerticalData.id === 'epr-fulfillment' ||
+                activeVerticalData.id === 'used-oil-rrbo' ||
+                activeVerticalData.id === 'circular-economy' ||
+                activeVerticalData.id === 'r3t') && (
                 <button
                   onClick={onOpenCalculator}
-                  className="px-5 py-3 rounded-xl bg-[#FBF3E6] hover:bg-[#F5E5C9] text-[#9E4A1F] font-semibold text-xs transition-colors border border-[#F8D8A0] flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-3 rounded-xl bg-[#FBF3E6] hover:bg-[#F5E5C9] text-[#9E4A1F] font-semibold text-xs transition-colors border border-[#F8D8A0] flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
                 >
                   <Sparkles className="w-4 h-4 text-[#F8B848]" />
                   <span>EPR Calculator</span>
                 </button>
               )}
+              {activeVerticalData.id === 'r3t' && (
+                <button
+                  onClick={() => {
+                    onRouteChange('recyklube');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="px-5 py-3 rounded-xl bg-[#F2EFE9] hover:bg-[#EAE2D5] text-[#242424] font-semibold text-xs transition-colors border border-[#D8D0C4] flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
+                >
+                  <RotateCw className="w-4 h-4 text-[#E85D36]" />
+                  <span>Explore R3T Platform</span>
+                </button>
+              )}
+              {activeVerticalData.id === 'ce-events' && (
+                <button
+                  onClick={() => {
+                    onRouteChange('events');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="px-5 py-3 rounded-xl bg-[#F2EFE9] hover:bg-[#EAE2D5] text-[#242424] font-semibold text-xs transition-colors border border-[#D8D0C4] flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
+                >
+                  <Calendar className="w-4 h-4 text-[#E85D36]" />
+                  <span>View Upcoming CE Events</span>
+                </button>
+              )}
               <button
                 onClick={() => onOpenEnquiry(activeVerticalData.title)}
-                className="px-6 py-3 rounded-xl bg-[#242424] hover:bg-black text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+                className="px-6 py-3 rounded-xl bg-[#242424] hover:bg-black text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs whitespace-nowrap shrink-0"
               >
                 <span>Submit RFP / Enquiry</span>
                 <ArrowRight className="w-4 h-4 text-[#F88058]" />
@@ -214,31 +225,6 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
             </div>
           )}
 
-        </div>
-      </section>
-
-      {/* All 4 Verticals Summary Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <span className="text-xs font-bold text-[#E85D36] uppercase tracking-wider">
-            Ecosystem Integration
-          </span>
-          <h3 className="font-serif text-3xl text-[#242424] font-bold">
-            How Our Verticals Synergize
-          </h3>
-          <p className="text-stone-600 text-sm">
-            Insights from our market intelligence feed into our consultancy scopes; our events convene stakeholders who participate in our RecykLube circular frameworks.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {SERVICE_VERTICALS.map((v) => (
-            <div key={v.id} className="p-5 rounded-2xl bg-[#FAF8F5] border border-[#EAE2D5] space-y-2">
-              <div className="font-mono text-xs font-bold text-[#E85D36]">{v.number}</div>
-              <h4 className="font-serif font-bold text-[#242424] text-base">{v.title}</h4>
-              <p className="text-xs text-stone-600 line-clamp-2">{v.tagline}</p>
-            </div>
-          ))}
         </div>
       </section>
 

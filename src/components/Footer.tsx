@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { PageRoute } from '../types';
+import { PageRoute, ServiceVerticalId } from '../types';
+import { SERVICE_VERTICALS } from '../data/mockData';
 import { Logo } from './Logo';
 import { 
   Mail, 
@@ -15,12 +16,14 @@ import {
 
 interface FooterProps {
   onRouteChange: (route: PageRoute) => void;
+  onOpenService: (serviceId: ServiceVerticalId) => void;
   onOpenEnquiry: (area?: string) => void;
   onOpenCalculator: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onRouteChange,
+  onOpenService,
   onOpenEnquiry,
   onOpenCalculator
 }) => {
@@ -168,38 +171,25 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 3: Solutions & Verticals (3 cols) */}
+          {/* Column 3: Services (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-[10px] font-sans font-bold text-[#E8E6E1]/60 uppercase tracking-[0.25em]">Business Solutions</h4>
+            <h4 className="text-[10px] font-sans font-bold text-[#E8E6E1]/60 uppercase tracking-[0.25em]">Services</h4>
             <ul className="space-y-2 text-sm text-[#E8E6E1]/80">
-              <li>
-                <button onClick={() => handleNavigate('events')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left flex items-center justify-between w-full group">
-                  <span>Events & Knowledge Platforms</span>
-                  <span className="text-[10px] text-[#E8E6E1]/40 font-mono">[01]</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('services')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left flex items-center justify-between w-full group">
-                  <span>Strategic & Technical Consultancy</span>
-                  <span className="text-[10px] text-[#E8E6E1]/40 font-mono">[02]</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('services')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left flex items-center justify-between w-full group">
-                  <span>Circular Economy & EPR Advisory</span>
-                  <span className="text-[10px] text-[#E8E6E1]/40 font-mono">[03]</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('news')} className="hover:text-white hover:underline underline-offset-4 transition-colors text-left flex items-center justify-between w-full group">
-                  <span>Industry News & Briefings</span>
-                  <span className="text-[10px] text-[#E8E6E1]/40 font-mono">[04]</span>
-                </button>
-              </li>
+              {SERVICE_VERTICALS.map((vert) => (
+                <li key={vert.id}>
+                  <button
+                    onClick={() => onOpenService(vert.id)}
+                    className="hover:text-white hover:underline underline-offset-4 transition-colors text-left flex items-center justify-between w-full group gap-2 cursor-pointer"
+                  >
+                    <span className="truncate">{vert.title}</span>
+                    <span className="text-[10px] text-[#E8E6E1]/40 font-mono shrink-0">[{vert.number}]</span>
+                  </button>
+                </li>
+              ))}
               <li className="pt-1">
                 <button 
                   onClick={() => handleNavigate('recyklube')} 
-                  className="px-3 py-1 rounded-full bg-[#262624] border border-white/20 text-[#E8E6E1] hover:text-white hover:border-white transition-colors text-xs font-sans uppercase tracking-[0.1em] inline-flex items-center gap-1.5"
+                  className="px-3 py-1 rounded-full bg-[#262624] border border-white/20 text-[#E8E6E1] hover:text-white hover:border-white transition-colors text-xs font-sans uppercase tracking-[0.1em] inline-flex items-center gap-1.5 cursor-pointer"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#B84A28]"></span>
                   <span>RecykLube Circular Ecosystem</span>

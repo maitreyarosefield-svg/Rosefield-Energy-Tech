@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { B2BEnquiryForm } from '../types';
-import { X, Send, CheckCircle2, ShieldCheck, Mail, Phone, Building2 } from 'lucide-react';
+import { SERVICE_VERTICALS } from '../data/mockData';
+import { X, Send, CheckCircle2, ShieldCheck, Building2 } from 'lucide-react';
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -11,7 +12,7 @@ interface EnquiryModalProps {
 export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   isOpen,
   onClose,
-  initialArea = 'Strategic & Technical Consultancy'
+  initialArea = 'EPR Fulfillment'
 }) => {
   const [formData, setFormData] = useState<B2BEnquiryForm>({
     name: '',
@@ -21,10 +22,16 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     email: '',
     phone: '',
     country: 'India',
-    areaOfInterest: initialArea || 'Strategic & Technical Consultancy',
+    areaOfInterest: initialArea || 'EPR Fulfillment',
     message: '',
     newsletterOptIn: true
   });
+
+  useEffect(() => {
+    if (isOpen && initialArea) {
+      setFormData(prev => ({ ...prev, areaOfInterest: initialArea }));
+    }
+  }, [isOpen, initialArea]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -231,11 +238,12 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   onChange={(e) => setFormData({ ...formData, areaOfInterest: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#1D1D1B]/15 text-sm text-[#1D1D1B] focus:bg-white focus:outline-hidden focus:border-[#1D1D1B] font-medium"
                 >
-                  <option value="Strategic & Technical Consultancy">Strategic & Technical Consultancy (Market Entry, Value Eng, M&A)</option>
-                  <option value="Circular Economy & EPR">Circular Economy & EPR Advisory (Target Compliance, Audits)</option>
+                  {SERVICE_VERTICALS.map((vert) => (
+                    <option key={vert.id} value={vert.title}>
+                      {vert.title}
+                    </option>
+                  ))}
                   <option value="RecykLube">RecykLube Circular Used Oil Ecosystem</option>
-                  <option value="Events & Conferences">Events & Conferences (Registration, Sponsorship, Speaker)</option>
-                  <option value="Market Intelligence & Reports">Market Intelligence & Publications (Custom Research, Reports)</option>
                   <option value="Partnerships & Business Development">Strategic Partnerships & Business Development</option>
                   <option value="Other">Other Strategic Requirement</option>
                 </select>
