@@ -26,6 +26,7 @@ export default function App() {
   const [enquiryArea, setEnquiryArea] = useState<string | undefined>(undefined);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activeServiceId, setActiveServiceId] = useState<ServiceVerticalId>('epr-fulfillment');
+  const [serviceScrollNonce, setServiceScrollNonce] = useState(0);
   const [activeNewsId, setActiveNewsId] = useState<string | null>(null);
   const [activeBlogId, setActiveBlogId] = useState<string | null>(null);
   const [activeGalleryId, setActiveGalleryId] = useState<string | null>(null);
@@ -70,8 +71,8 @@ export default function App() {
 
   const handleOpenService = (serviceId: ServiceVerticalId) => {
     setActiveServiceId(serviceId);
+    setServiceScrollNonce((n) => n + 1);
     setCurrentRoute('services');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleOpenNews = (newsId?: string) => {
@@ -140,6 +141,7 @@ export default function App() {
             onOpenEnquiry={handleOpenEnquiry}
             onOpenCalculator={handleOpenCalculator}
             initialVertical={activeServiceId}
+            scrollTriggerNonce={serviceScrollNonce}
           />
         )}
 

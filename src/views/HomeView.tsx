@@ -1,7 +1,6 @@
 import React from 'react';
 import { PageRoute, ServiceVerticalId } from '../types';
 import { 
-  SERVICE_VERTICALS, 
   RECYKLUBE_STEPS, 
   WHY_ROSEFIELD, 
   OUR_APPROACH_STEPS, 
@@ -11,6 +10,7 @@ import {
   EVENTS_DATA, 
   TRUST_STATS 
 } from '../data/mockData';
+import { ServicesScrollSpy } from '../components/ServicesScrollSpy';
 import { 
   ArrowRight, 
   Sparkles, 
@@ -24,9 +24,6 @@ import {
   Users, 
   Compass, 
   BarChart3, 
-  RefreshCw, 
-  GraduationCap,
-  ClipboardCheck,
   Download,
   Building2,
   TreePine
@@ -34,7 +31,7 @@ import {
 
 interface HomeViewProps {
   onRouteChange: (route: PageRoute) => void;
-  onOpenService: (serviceId: ServiceVerticalId) => void;
+  onOpenService?: (serviceId: ServiceVerticalId) => void;
   onOpenEnquiry: (area?: string) => void;
   onOpenNews: (newsId?: string) => void;
   onOpenBlog: (blogId?: string) => void;
@@ -45,7 +42,6 @@ interface HomeViewProps {
 
 export const HomeView: React.FC<HomeViewProps> = ({
   onRouteChange,
-  onOpenService,
   onOpenEnquiry,
   onOpenNews,
   onOpenBlog,
@@ -53,19 +49,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenEvent,
   onOpenCalculator
 }) => {
-
-  const getVerticalIcon = (id: string) => {
-    switch (id) {
-      case 'epr-fulfillment': return <ShieldCheck className="w-5 h-5 text-[#E85D36]" />;
-      case 'used-oil-rrbo': return <Droplets className="w-5 h-5 text-[#F8B848]" />;
-      case 'training-certification': return <GraduationCap className="w-5 h-5 text-[#F88058]" />;
-      case 'technical-audits': return <ClipboardCheck className="w-5 h-5 text-[#E85D36]" />;
-      case 'circular-economy': return <RefreshCw className="w-5 h-5 text-[#F8B848]" />;
-      case 'r3t': return <RotateCw className="w-5 h-5 text-[#F88058]" />;
-      case 'ce-events': return <Calendar className="w-5 h-5 text-[#F8B848]" />;
-      default: return <Sparkles className="w-5 h-5 text-[#F88058]" />;
-    }
-  };
 
   const getWhyIcon = (id: string) => {
     switch (id) {
@@ -330,96 +313,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </button>
         </div>
 
-        {/* 7 Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {SERVICE_VERTICALS.map((vert, idx) => (
-            <div 
-              key={vert.id}
-              className={`p-8 rounded-3xl bg-white border border-[#1D1D1B]/10 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group ${
-                idx === SERVICE_VERTICALS.length - 1 ? 'md:col-span-2' : ''
-              }`}
-            >
-              <div className="space-y-4">
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-2xl bg-[#F9F8F6] border border-[#1D1D1B]/15 text-[#1D1D1B] shrink-0">
-                      {getVerticalIcon(vert.id)}
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono font-bold text-[#B84A28] block tracking-wider">
-                        VERTICAL {vert.number}
-                      </span>
-                      <h3 className="font-serif text-2xl font-medium text-[#1D1D1B] group-hover:text-[#B84A28] transition-colors">
-                        {vert.title}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-xs text-[#1D1D1B]/60 font-serif italic">
-                  {vert.tagline}
-                </p>
-
-                <p className="text-sm text-[#1D1D1B]/70 leading-relaxed font-sans">
-                  {vert.description}
-                </p>
-
-                {/* Capability Bullet List */}
-                <div className="pt-2 space-y-2 border-t border-[#1D1D1B]/10">
-                  <span className="text-[10px] font-sans font-bold text-[#1D1D1B]/40 uppercase tracking-[0.2em] block">
-                    Core Capabilities:
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#1D1D1B]/80 font-sans">
-                    {vert.capabilities.slice(0, 4).map((cap, i) => (
-                      <div key={i} className="flex items-start gap-2">
-                        <span className="text-[#B84A28] font-bold shrink-0">▪</span>
-                        <span className="line-clamp-2">{cap}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {vert.caseSnippet && (
-                  <div className="p-3.5 rounded-2xl bg-[#F9F8F6] border border-[#1D1D1B]/10 text-xs text-[#1D1D1B]/70 italic font-serif">
-                    <span className="font-sans font-bold text-[#1D1D1B] not-italic">Key Case Highlight: </span>
-                    {vert.caseSnippet}
-                  </div>
-                )}
-
-              </div>
-
-              {/* Action Button */}
-              <div className="pt-6 mt-6 border-t border-[#1D1D1B]/10 flex items-center justify-between">
-                <button
-                  onClick={() => {
-                    if (vert.id === 'ce-events') {
-                      onRouteChange('events');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else if (vert.id === 'r3t') {
-                      onRouteChange('recyklube');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                      onOpenService(vert.id);
-                    }
-                  }}
-                  className="px-5 py-2.5 rounded-full bg-[#1D1D1B] hover:bg-black text-[#F9F8F6] text-xs font-sans font-bold uppercase tracking-[0.15em] transition-colors flex items-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
-                >
-                  <span>{vert.ctaText}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#E8E6E1]" />
-                </button>
-
-                <button
-                  onClick={() => onOpenEnquiry(vert.title)}
-                  className="text-xs text-[#1D1D1B]/60 hover:text-[#B84A28] font-sans font-medium underline underline-offset-4"
-                >
-                  Submit RFP / Enquiry →
-                </button>
-              </div>
-
-            </div>
-          ))}
-        </div>
+        {/* Sticky Scroll-Spy Split-Screen Layout */}
+        <ServicesScrollSpy
+          onRouteChange={onRouteChange}
+          onOpenEnquiry={onOpenEnquiry}
+          onOpenCalculator={onOpenCalculator}
+        />
 
       </section>
 

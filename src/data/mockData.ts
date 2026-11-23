@@ -4,6 +4,8 @@ import plantPhoto from '../assets/images/gallery_rerefining_plant_1795365286705.
 import labPhoto from '../assets/images/gallery_oil_lab_testing_1795365287315.jpg';
 import logisticsPhoto from '../assets/images/gallery_recyklube_logistics_1795365288314.jpg';
 import evFluidPhoto from '../assets/images/blog_ev_thermal_fluid_1795365288600.jpg';
+import eprFulfillmentPhoto from '../assets/images/service_epr_fulfillment_1795461139622.jpg';
+import trainingCertPhoto from '../assets/images/service_training_cert_1795461139614.jpg';
 
 export const TRUST_STATS: TrustStat[] = [
   {
@@ -36,6 +38,13 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
     tagline: 'End-to-end Extended Producer Responsibility planning, credit procurement, and statutory filing.',
     description: 'Comprehensive EPR compliance management for lubricant producers, importers, and brand owners under CPCB Used Oil regulations. We structure target quantification, verified recycler partnerships, digital credit reconciliation, and audit-ready regulatory submissions.',
     iconName: 'ShieldCheck',
+    image: eprFulfillmentPhoto,
+    highlights: [
+      'Target Quantification',
+      'Verified Recycler Partnerships',
+      'Digital Credit Reconciliation',
+      'Audit-Ready Submissions'
+    ],
     capabilities: [
       'CPCB Portal Registration & Annual Return Filings',
       'Producer-Specific EPR Target Quantification & Forecasting',
@@ -65,6 +74,13 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
     tagline: 'Structuring organized reverse logistics and high-grade Re-Refined Base Oil (RRBO) supply chains.',
     description: 'We bridge the gap between fragmented used oil generation hubs and authorized re-refining facilities. Our enablement framework establishes compliant collection networks, quality-assured feedstock aggregation, and commercial RRBO offtake agreements for lubricant blenders.',
     iconName: 'Droplets',
+    image: plantPhoto,
+    highlights: [
+      'Compliant Collection Networks',
+      'Quality-Assured Feedstock',
+      'Authorized Re-Refining Linkages',
+      'Commercial RRBO Offtake'
+    ],
     capabilities: [
       'Authorized Collection Partner Onboarding & Route Design',
       'Bulk Generator Aggregation (Workshops, Fleets, Industrial Plants)',
@@ -94,6 +110,13 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
     tagline: 'Specialised technical masterclasses, EPR compliance workshops, and industry credentials.',
     description: 'Targeted capacity-building programs engineered for lubricant technologists, plant managers, environmental officers, and commercial teams. Our structured courses and certification tracks build hands-on mastery in formulation, tribology, used oil testing, and circular governance.',
     iconName: 'GraduationCap',
+    image: trainingCertPhoto,
+    highlights: [
+      'Formulation & Tribology Mastery',
+      'Used Oil Testing Protocols',
+      'Circular Governance Tracks',
+      'Professional Certification'
+    ],
     capabilities: [
       'EPR Compliance & CPCB Portal Execution Workshops',
       'Lubricant Formulation, Additive Chemistry & Tribology Modules',
@@ -123,6 +146,13 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
     tagline: 'Independent plant assessments, lab QA/QC verification, and environmental compliance audits.',
     description: 'Rigorous third-party technical and statutory audits for blending plants, used oil re-refineries, and storage depots. We evaluate process efficiency, feedstock mass balance, laboratory accreditation readiness, and environmental safeguards to ensure bankable operational compliance.',
     iconName: 'ClipboardCheck',
+    image: labPhoto,
+    highlights: [
+      'Process Efficiency Reviews',
+      'Feedstock Mass Balance',
+      'Lab Accreditation Readiness',
+      'Environmental Safeguards'
+    ],
     capabilities: [
       'Re-Refining Plant Technical Capacity & Mass-Balance Audits',
       'Lubricant Blending Plant SOP & Quality Assurance Reviews',
@@ -152,6 +182,13 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
     tagline: 'Strategic decarbonisation, Scope 3 reduction, and circular transition roadmaps for energy.',
     description: 'We help lubricant, chemical, and industrial enterprises transition from linear resource consumption to regenerative circular models. Our advisory integrates lifecycle assessment, RRBO incorporation strategies, packaging circularity, and corporate ESG alignment.',
     iconName: 'RefreshCw',
+    image: evFluidPhoto,
+    highlights: [
+      'Lifecycle Assessment',
+      'RRBO Incorporation Strategy',
+      'Packaging Circularity',
+      'Corporate ESG Alignment'
+    ],
     capabilities: [
       'Corporate Circular Economy Strategy & Transition Roadmaps',
       'Scope 3 Carbon Abatement & Lifecycle Assessment (LCA) Modelling',
@@ -181,6 +218,13 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
     tagline: 'Recover, Re-refine, Reuse & Trace — our flagship digital and operational circular ecosystem.',
     description: 'R3T powers transparent circularity across the used oil value chain through structured recovery, advanced re-refining linkages, compliant reuse, and end-to-end digital traceability. Designed to connect generators, collectors, re-refiners, and obligated producers on a single accountable framework.',
     iconName: 'RotateCw',
+    image: logisticsPhoto,
+    highlights: [
+      'Structured Recovery',
+      'Advanced Re-Refining Linkages',
+      'Compliant RRBO Reuse',
+      'End-to-End Digital Traceability'
+    ],
     capabilities: [
       'End-to-End Digital Used Oil Manifest & Batch Traceability',
       'Recover: Geo-Tagged Pickup Scheduling from Bulk Generators',
@@ -210,6 +254,13 @@ export const SERVICE_VERTICALS: ServiceVertical[] = [
     tagline: 'Premier Circular Economy summits, policy roundtables, and cross-industry leadership forums.',
     description: 'We conceive and execute dedicated Circular Economy (CE) conferences, regulator-industry dialogues, and technology showcases for the lubricants, fuels, and resource recovery sectors. Our events unite policymakers, OEMs, recyclers, and technology innovators to drive market action.',
     iconName: 'Calendar',
+    image: summitPhoto,
+    highlights: [
+      'Circular Economy Conferences',
+      'Regulator-Industry Dialogues',
+      'Technology Showcases',
+      'OEM & Recycler Convening'
+    ],
     capabilities: [
       'Flagship Circular Economy & Used Oil Conclaves',
       'Regulator-Industry Policy Roundtables & Working Sessions',

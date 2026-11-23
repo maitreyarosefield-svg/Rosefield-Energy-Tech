@@ -26,6 +26,8 @@ export interface ServiceVertical {
   tagline: string;
   description: string;
   iconName: string;
+  highlights: string[];
+  image: string;
   capabilities: string[];
   keyOutcomes: string[];
   targetAudience: string[];
