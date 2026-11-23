@@ -95,7 +95,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
 
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#1D1D1B] font-medium leading-[1.12] tracking-tight">
-                Powering the Future of <span className="italic font-normal text-[#B84A28]">Lubricants</span>, Fuels & Circular Economy
+                Powering the Future of <span className="italic font-normal text-[#B84A28]">Lubricants</span> & Circular Economy
               </h1>
 
               <p className="text-base sm:text-lg text-[#1D1D1B]/70 leading-relaxed max-w-2xl font-sans">

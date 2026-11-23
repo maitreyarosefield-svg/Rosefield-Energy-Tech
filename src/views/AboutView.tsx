@@ -35,7 +35,7 @@ export const AboutView: React.FC<AboutViewProps> = ({
             <span>About Rosefield Energy Tech</span>
           </div>
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-white max-w-3xl leading-tight">
-            Pioneering Knowledge, Strategy & Circular Solutions
+            Committed to Sustainability
           </h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed">
             Rosefield Energy Tech Pvt. Ltd. is a specialised consulting, knowledge, and business solutions organisation connecting stakeholders across the lubricants, fuels, energy, and circular economy ecosystem.
