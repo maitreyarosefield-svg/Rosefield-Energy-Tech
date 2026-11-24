@@ -107,18 +107,18 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className={`w-full bg-[#F9F8F6]/95 backdrop-blur-md border-b transition-shadow duration-200 ${
         isScrolled ? 'shadow-sm border-[#1D1D1B]/15' : 'border-[#1D1D1B]/10'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-22 sm:h-24 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 h-24 sm:h-26 flex items-center justify-between gap-4">
           
           {/* Brand Logo */}
           <button 
             onClick={() => handleNavClick('home')}
-            className="text-left focus:outline-hidden group cursor-pointer py-1"
+            className="text-left focus:outline-hidden group cursor-pointer py-1 shrink-0"
           >
             <Logo size="md" />
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13.5px] font-sans font-medium text-[#1D1D1B]/80">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-2 text-[13px] xl:text-[13.5px] font-sans font-medium text-[#1D1D1B]/80">
             
             <button
               onClick={() => handleNavClick('home')}

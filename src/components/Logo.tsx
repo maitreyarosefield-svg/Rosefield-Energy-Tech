@@ -17,7 +17,7 @@ export const Logo: React.FC<LogoProps> = ({
   // Responsive heights tailored for trimmed 913x260 logo in navbar, drawers, and footer
   const heightClasses = {
     sm: 'h-9 sm:h-10 max-w-[160px]',
-    md: 'h-12 sm:h-14 max-w-[260px]',
+    md: 'h-[58px] sm:h-[67px] max-w-[312px]',
     lg: 'h-14 sm:h-16 max-w-[300px]',
     xl: 'h-16 sm:h-20 max-w-[360px]'
   };
